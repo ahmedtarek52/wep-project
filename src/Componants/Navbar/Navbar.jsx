@@ -25,7 +25,7 @@ export default function Navbar() {
             <Link className="nav-link p-2 p-lg-3" href="#">Portfolio</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" href="#">About</Link>
+            <Link className="nav-link p-2 p-lg-3" href="about">About</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link p-2 p-lg-3" href="#">Contact</Link>

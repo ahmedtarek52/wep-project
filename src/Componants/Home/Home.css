@@ -21,10 +21,8 @@
     font-weight: 500;
     border-radius: 5px;
     font-size: 15px;
-    padding: 10px 20px;
-    
+    padding: 10px 20px;   
 }
-
 
 a{
     text-decoration: none;
@@ -39,7 +37,6 @@ a{
     width: 100%;
     height: 100%;
     position: absolute;
-
 }
 .carousel .list .item img{
     object-fit: cover;
@@ -49,7 +46,7 @@ a{
     left: 5%;
 }
 
-.carousel .list .item .author{
+ .author {
     font-size: 40px ;
     color: var(--orange-bg);
     font-family: 'Caveat', cursive;  
@@ -59,9 +56,7 @@ a{
     font-size: 48px;
     /* font-weight: bold; */
     line-height: 1.3em;
-    font-family: var(--main-font);
-    
-    
+    font-family: var(--main-font);   
 }
 .carousel .list .item .des{
     line-height: 27px;
@@ -76,7 +71,6 @@ a{
     padding: 20px 0  ;
     font-size: 15px;
 }
-
 
 /* arrows */
 .arrows{
@@ -137,8 +131,6 @@ a{
 }
 
 /* start land */
-
-
 .fundraiser .help{
     font-size: 1.5rem ;
     color: var(--orange-bg);
@@ -148,7 +140,6 @@ a{
     font-family: 'Quicksand', sans-serif;
 }
 
-
 .fundraiser .border-start  {
     border-color: var(--orange-bg) !important;
 }
@@ -157,3 +148,83 @@ a{
 }
 
 /* end land */
+
+/* start activites */
+  .image-container img {
+    height: 320px;
+    object-fit: cover;
+  }
+  .activites .border-start  {
+    border-color: var(--orange-bg) !important;
+}
+.activites .smile{
+    font-size: 1.5rem ;
+    color: var(--orange-bg);
+    font-family: 'Caveat', cursive;  
+}
+.activites .image-container{
+    overflow: hidden;
+    position: relative;
+  }
+  .activites .image-container::before {
+    content: attr(data-work);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: calc(100% );
+    height: calc(100% );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    transform: translateX(-100% ) ;
+    /* transition: ease-in-out 2s 5s linear !important ; */
+  }
+  .activites .image-container:hover::before {
+    transform: translateX(0);
+    
+  }
+/* end activites */
+
+/* start quote  */
+.quote {
+    position: relative;
+    background-image: url('../images/event8-1.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    /* height: 50vh;  */
+    text-align: center;
+    color: white;
+}
+
+.quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+.quote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00162FDB;
+  }
+
+  .quote q {
+    font-size: 35px;
+     font-family: 'Quicksand', sans-serif;
+  }
+/* end quote  */
+
+.heart-icon:hover{
+    /* position: absolute; */
+    /* height: 70px; */
+    font-size: 20px;
+    /* transform: scale3d(1); */
+}
