@@ -9,32 +9,27 @@ export default function Navbar() {
       <Link className="navbar-brand" href="#">
         <img src="imgs/logo.png" alt="" />
       </Link>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <i className="fa-solid fa-bars"></i>
-      </button>
+     
       <div className="collapse navbar-collapse" id="main">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <Link className="nav-link p-2 p-lg-3 active" aria-current="page" href="#">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" href="#">Services</Link>
+            <Link className="nav-link p-2 p-lg-3" to ={"/brands"} >brands</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" href="#">Portfolio</Link>
+            <Link className="nav-link p-2 p-lg-3" to = {"/organization"} >organizations</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" href="about">About</Link>
+            <Link className="nav-link p-2 p-lg-3" to = {"/about"} >About</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link p-2 p-lg-3" href="#">Contact</Link>
           </li>
         </ul>
-        <div className="search ps-3 pe-3 d-none d-lg-block">
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <Link className="btn rounded-pill main-btn" href="#">Login</Link>
+        
+        <Link className="btn rounded-pill main-btn" to = {"/login"} >Login</Link>
       </div>
     </div>
   </nav>
