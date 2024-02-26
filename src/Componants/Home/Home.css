@@ -226,5 +226,6 @@ a{
     /* position: absolute; */
     /* height: 70px; */
     font-size: 20px;
-    /* transform: scale3d(1); */
+    transition-duration: .2s;
+    
 }

@@ -1,52 +1,63 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import signupImg from "../images/home2.jpg";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import Joi from "joi";
+import axios from 'axios';
+import Joi from 'joi';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  const navigate = useNavigate();
-  const [validateForm, setvalidate] = useState([]);
-  const notify = () =>
-    toast.success("your account created Successfully!", {
-      position: "top-left",
-    });
-  const [signupData, setsignupData] = useState({
-    username: "",
-    phone: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+  const [errorList, seterrorList] = useState([])
+  let navigate = useNavigate();
+  const [error, setError] = useState('')
+  const [isLoding, setisLoding] = useState(false)
+  const [user, setUser] = useState({
+    username: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirmPassword: '',
   });
-  function takeUserData(e) {
-    const userData = { ...signupData };
-    userData[e.target.name] = e.target.value;
-    setsignupData(userData);
+
+  function getUserData(eventInfo) {
+    let myUser = { ...user };
+    myUser[eventInfo.target.name] = eventInfo.target.value;
+    setUser(myUser);
   }
-  async function sendData() {
-    const { data } = await axios.post("https://nervous-plum-walkingstick.cyclic.app/register",signupData);
-    console.log(data);
-    if (data.success) {
-      notify();
-      navigate("/login");
+
+  async function sendRegisterToApi() {
+    let { data } = await axios.post('https://nervous-plum-walkingstick.cyclic.app/register', user);
+    if (data.success === true) {
+      console.log(data);
+      setisLoding(false);
+      navigate('/login')
+      // // login
+    }
+    else {
+      setisLoding(false);
+      setError(data.message);
     }
   }
-  function handleSummit(e) {
+
+  function submitRegisterForm(e) {
     e.preventDefault();
-    const validate = validation();
-    if (validate.error) {
-      setvalidate(validate.error.details);
-    } else {
-      sendData();
+    setisLoding(true);
+    
+    let validation = validateRegisterform();
+    // console.log(validation);
+    if (validation.error) {
+      setisLoding(false);
+      seterrorList(validation.error.details);
+      
+    }
+    else {
+      sendRegisterToApi();
     }
   }
-  function validation() {
-    const schema = Joi.object({
-      username: Joi.string().min(3).max(12).required(),
-      phone: Joi.number().min(11).required(),
+
+  function validateRegisterform() {
+    let scheme = Joi.object({
+      username: Joi.string().min(3).max(10).required(),
       email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-      // password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+      phone: Joi.string().min(11).max(11),
       password: Joi.string().required(),
       confirmpassword:Joi.ref('password'),
       confirmPassword: Joi.string()
@@ -57,170 +68,46 @@ export default function Register() {
         'any.only': 'Confirm Password must match the Password',
       }),
     });
-    return schema.validate(signupData, { abortEarly: true });
+    // console.log(scheme.validate(user));
+    return scheme.validate(user, { abortEarly: false });
   }
 
- 
-  return (
-    <section className="row">
-      <div className="container-fluid h-custom">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src={signupImg}
-              className="img-fluid"
-              alt="signupImage"
-              loading="lazy"
-            />
-          </div>
+  return (<>
+
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Register</title>
+            </Helmet>
+    
+    {errorList.map((err,index)=> {
+      if(err.context.label === "password"){
+        return <div key={index} className=" alert alert-danger my-2">password invalid</div>
+      }
+      else{
+       return <div key={index} className=" alert alert-danger my-2">{err.message}</div>
+      }
+    })}
 
 
+    {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
+    <form onSubmit={submitRegisterForm} className='mt-5'>
+      <label htmlFor="username" className=''>username:</label>
+      <input onChange={getUserData} type="text" className='form-control my-input my-2' name='username' id="username"></input>
 
+      <label htmlFor="email" className=''>email:</label>
+      <input onChange={getUserData} type="email" className='form-control my-input my-2' name='email' id="email"></input>
 
+      <label htmlFor="phone" className=''>phone:</label>
+      <input onChange={getUserData} type="number" className='form-control my-input my-2' name='phone' id="phone"></input>
 
+      <label htmlFor="password" className=''>password:</label>
+      <input onChange={getUserData} type="password" className='form-control my-input my-2' name='password' id="password"></input>
+      <label htmlFor="confirmpassword" className=''>confirmpassword:</label>
 
-
-
-
-
-          <div className="col-md-8 col-lg-6 col-xl-4">
-            <form onSubmit={handleSummit}>
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="full name">
-                  user name
-                </label>
-                <input
-                  type="text"
-                  id="full name"
-                  className="form-control form-control-lg"
-                  placeholder="Enter your name"
-                  name="username"
-                  onChange={takeUserData}
-                />
-                {validateForm.length > 0 ? (
-                  <p className="text-danger">
-                    {
-                      validateForm.filter(
-                        (el) => el.context.label === "username"
-                      )[0]?.message
-                    }
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="phone">
-                  phone
-                </label>
-                <input
-                  type="text"
-                  id="phone"
-                  className="form-control form-control-lg"
-                  placeholder="Enter a phone number"
-                  name="phone"
-                  onChange={takeUserData}
-                />
-                {validateForm.length > 0 ? (
-                  <p className="text-danger">
-                    {
-                      validateForm.filter(
-                        (el) => el.context.label === "phone"
-                      )[0]?.message
-                    }
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="email">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="form-control form-control-lg"
-                  placeholder="Enter a valid email"
-                  name="email"
-                  onChange={takeUserData}
-                />
-                {validateForm.length > 0 ? (
-                  <p className="text-danger">
-                    {
-                      validateForm.filter(
-                        (el) => el.context.label === "email"
-                      )[0]?.message
-                    }
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="form-control form-control-lg "
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={takeUserData}
-                />
-                {validateForm.length > 0 ? (
-                  <p className="text-danger">
-                    {
-                      validateForm.filter(
-                        (el) => el.context.label === "password"
-                      )[0]?.message
-                    }
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="confirmPassword">
-                confirmPassword
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  className="form-control form-control-lg "
-                  placeholder="Enter password"
-                  name="confirmPassword"
-                  onChange={takeUserData}
-                />
-                {validateForm.length > 0 ? (
-                  <p className="text-danger">
-                    {
-                      validateForm.filter(
-                        (el) => el.context.label === "confirmPassword"
-                      )[0]?.message
-                    }
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="text-start mt-4 pt-2">
-                <ToastContainer />
-                <button type="submit" className="btn bgBtn btn-block mb-4 fs-5">
-                  create account
-                </button>
-                <p className="small fw-bold mb-3 fs-6">
-                  have an account?{" "}
-                  <Link to="/login" className="mainColor">
-                    login
-                  </Link>
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+      <input onChange={getUserData} type="password" className='form-control my-input my-2' name='confirmPassword' id="confirmpassword"></input>
+      <button type='submit' className='btn btn-info'>
+        {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Register'}
+      </button>
+    </form>
+  </>)
 }

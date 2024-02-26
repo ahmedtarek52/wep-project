@@ -1,105 +1,96 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import loginImg from '../images/home1.jpg'
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import Joi from 'joi';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-  const navigate = useNavigate();
-
-  const [validateForm, setValidate] = useState({})
-  const notify = () => toast.error(validateForm, {
-    position: "top-left",
-  });
-  const [loginData, setloginData] = useState({
+  const [errorList, seterrorList] = useState([])
+  let navigate = useNavigate();
+  const [error, setError] = useState('')
+  const [isLoding, setisLoding] = useState(false)
+  const [user, setUser] = useState({
     email: '',
-    password: ''
+    password: '',
   });
-  function takeUserData(e) {
-    const userData = { ...loginData };
-    userData[e.target.name] = e.target.value;
-    setloginData(userData);
+
+  function getUserData(eventInfo) {
+    let myUser = { ...user };
+    myUser[eventInfo.target.name] = eventInfo.target.value;
+    setUser(myUser);
   }
-  async function sendData() {
-    try{
-      await axios.post(`https://nervous-plum-walkingstick.cyclic.app/login`, loginData);
-      navigate('/about');
+
+  async function sendLoginToApi() {
+    let { data } = await axios.post('https://nervous-plum-walkingstick.cyclic.app/Login', user);
+    if (data.success === true) {
+      setisLoding(false);
+     
+      navigate('/')
+      // // login
     }
-    catch(err){
-      if (!err.response.data.success){
-        setValidate(err.response.data.message);
-        notify();
-      }
+    else {
+      setisLoding(false);
+      setError(data.message);
     }
   }
-function handleSubmit(e) {
+
+  function submitLoginForm(e) {
     e.preventDefault();
-      sendData();
+    setisLoding(true);
+    
+    let validation = validateLoginform();
+    // console.log(validation);
+    if (validation.error) {
+      setisLoding(false);
+      seterrorList(validation.error.details);
+      
+    }
+    else {
+      sendLoginToApi();
+    }
   }
- return (
-    <>
+
+  function validateLoginform() {
+    let scheme = Joi.object({
+      email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+      password: Joi.string().required(),
+      confirmpassword:Joi.ref('password'),
+     
+    });
+    // console.log(scheme.validate(user));
+    return scheme.validate(user, { abortEarly: false });
+  }
+
+  return (<>
+
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Login</title>
+            </Helmet>
     
-    <section className="row">
-      <div className="container-fluid h-custom">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src={loginImg}
-              className="img-fluid"
-              alt="loginImage"
-              loading='lazy'
-            />
-          </div>
-          <div className="col-md-6 px-3">
-            <form onSubmit={handleSubmit}>
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="email">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="form-control form-control-lg"
-                  placeholder="Enter your email"
-                  name="email"
-                  onChange={takeUserData}
-                />
-              </div>
-              <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="form-control form-control-lg "
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={takeUserData}
-                />
-              </div>
-              <div className="text-start mt-4 pt-2">
-                <button
-                  type="submit"
-                  className="btn btn-outline-danger btn-block mb-4 fs-5"
-                >
-                  Login
-                </button>
-                <ToastContainer />
-                <p className="small fw-bold mb-3 fs-6">
-                  Don't have an account?{" "}
-                  <Link to="/register" className="mainColor">
-                    register
-                  </Link>
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    {errorList.map((err,index)=> {
+      if(err.context.label === "password"){
+        return <div key={index} className=" alert alert-danger my-2">password invalid</div>
+      }
+      else{
+       return <div key={index} className=" alert alert-danger my-2">{err.message}</div>
+      }
+    })}
+
+
+    {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
+    <form onSubmit={submitLoginForm} className='mt-5'>
     
-    
-    </>
- )
+
+      <label htmlFor="email" className=''>email:</label>
+      <input onChange={getUserData} type="email" className='form-control my-input my-2' name='email' id="email"></input>
+
+      <label htmlFor="password" className=''>password:</label>
+      <input onChange={getUserData} type="password" className='form-control my-input my-2' name='password' id="password"></input>
+      
+      <button type='submit' className='btn btn-info'>
+        {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
+      </button>
+    </form>
+  </>)
 }
