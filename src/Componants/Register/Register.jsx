@@ -3,10 +3,8 @@ import Joi from 'joi';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import { API_URL } from '../../utils/api';
-=======
->>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
+
 
 export default function Register() {
   const [errorList, seterrorList] = useState([])
@@ -28,11 +26,8 @@ export default function Register() {
   }
 
   async function sendRegisterToApi() {
-<<<<<<< HEAD
     let { data } = await axios.post(`${API_URL}/register`, user);
-=======
-    let { data } = await axios.post('https://nervous-plum-walkingstick.cyclic.app/register', user);
->>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
+
     if (data.success === true) {
       console.log(data);
       setisLoding(false);

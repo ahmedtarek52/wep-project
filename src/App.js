@@ -11,6 +11,7 @@ import OrganizationDetails from './Componants/OrganizationDetails/OrganizationDe
 import Login from './Componants/Login/Login';
 import Register from './Componants/Register/Register';
 import Profile from './Componants/Profile/Profile';
+import Contact from './Componants/Contact/Contact';
 
 
 let routers = createBrowserRouter ([
@@ -19,6 +20,7 @@ let routers = createBrowserRouter ([
   { path: 'login', element: <Login/> },
   { path: 'register', element: <Register/> },
   { path: 'about', element: <About /> },
+  { path: 'contact', element: <Contact/> },
   { path: 'profile', element: <Profile/> },
   { path: 'brands', element: <Brands/> },
   { path: 'brandDetails/:id', element: <BrandDetails/> },

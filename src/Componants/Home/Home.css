@@ -14,6 +14,12 @@
     font-family: 'Roboto', sans-serif;
     font-family: 'Work Sans', sans-serif;
   }
+  .contactForm .label {
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
   .buttons button{
     border: none;
     background-color: var(--orange-bg);

@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-<<<<<<< HEAD
-=======
+
 import './index.css';
->>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
+// >>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "@fortawesome/fontawesome-free/css/all.min.css";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import './index.css';
-=======
->>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
+// =======
+// >>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

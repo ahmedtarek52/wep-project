@@ -6,15 +6,10 @@ export default function Navbar() {
     <>
     <nav className="navbar navbar-expand-lg bg-light sticky-top">
     <div className="container">
-<<<<<<< HEAD
-      <Link className="navbar-brand" to="/">
-        <img src="imgs/logo.png" alt="logoimage" loading='lazy' />
-=======
-      <Link className="navbar-brand" href="#">
-        <img src="imgs/logo.png" alt="" />
->>>>>>> 407829ea4c51cec6532e07e26c5ceddd7840fe7b
-      </Link>
-     
+
+      <Link className="navbar-brand" to="/" />
+        {/* <img src="imgs/logo.png" alt="logoimage" loading='lazy' /> */}
+  
       <div className="collapse navbar-collapse" id="main">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">
