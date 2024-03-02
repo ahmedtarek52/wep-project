@@ -1,10 +1,10 @@
 
 import React, { useEffect, useRef } from "react";
-import cha from "../images/home1.jpg";
-import cha1 from "../images/home2.jpg";
-import cha2 from "../images/cha-childrens-1.jpg";
-import cha3 from "../images/cha-childrens1-1-1.jpg";
-import cha4 from "../images/sub-border-1.png";
+import startPage from "../images/home1.jpg";
+import startPage1 from "../images/home2.jpg";
+import land1 from "../images/cha-childrens-1.jpg";
+import land2 from "../images/cha-childrens1-1-1.jpg";
+import land3 from "../images/sub-border-1.png";
 import cause1 from "../images/causes-1.jpg";
 import cause2 from "../images/causes-2.jpg";
 import cause3 from "../images/causes-3.jpg";
@@ -61,7 +61,7 @@ export default function Home() {
       >
         <div className="list">
           <div className="item  position-absolute carousel-item active">
-            <img className="w-100 h-100" src={cha} alt="" />
+            <img className="w-100 h-100" src={startPage} alt="" />
             <div className="content col-md-6  position-absolute text-light">
               <p className="author">we help you</p>
               <h1 className="topic text-uppercase">save the childrens</h1>
@@ -86,7 +86,7 @@ export default function Home() {
             </div>
           </div>
           <div className="item position-absolute carousel-item active">
-            <img className="w-100 h-100" src={cha1} alt="" />
+            <img className="w-100 h-100" src={startPage1} alt="" />
             <div className="content col-md-6 position-absolute text-light ">
               <p className="author">we help you</p>
               <h1 className="topic text-uppercase">make differance today</h1>
@@ -122,22 +122,66 @@ export default function Home() {
       </div>
     </section>
      
+    <section id="startUp"  >
+      <div className="interface container pt-3 shadow-sm p-3 mb-5  rounded">
+        <div className="row ">
+          <div className="icon-box col-md-4 px-lg-3 ">
+            <div className="ps-lg-4 text-center">
+            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
+             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
+             <img className="text-danger-subtle" src={icon1} alt="" />
+              <span className=" position-absolute text-warning"><i className="fa-solid fa-hand-holding-heart fa-3x"></i></span>
+             </div>
+             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Become Volunteer</h3>
+            </div>
+            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">Become a volunteer if you are motivated & ready to support people and the community.</p>
+            </div>
+          </div>
+          <div className="icon-box  col-md-4 px-lg-3 ">
+            <div className="ps-lg-4 text-center">
+            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
+             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
+             <img className="text-danger-subtle" src={icon1} alt="" />
+              <span className="position-absolute text-info"><i class="fa-solid fa-wallet fa-3x"></i></span>
+             </div>
+             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Quick Fundraise</h3>
+            </div>
+            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">The simplest and quickest way to make a donation, so you can support people in need.</p>
+            </div>
+          </div>
+          <div className="icon-box  col-md-4 px-lg-3 ">
+            <div className="ps-lg-4 text-center">
+            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
+             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
+             <img className="text-danger-subtle" src={icon1} alt="" />
+              <span className=" position-absolute text-success"><i class="fa-solid fa-heart-circle-check fa-3x"></i></span>
+             </div>
+             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Start Donating</h3>
+            </div>
+            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">Start donating for our campaigns to support poor people and children returning to school.</p>
+            </div>
+          </div>
+        </div>
+          
+      </div>
+    </section>
+
       {/* satart land */}
       <section id="about  ">
         <div className="container py-5 ">
           <div className=" row  d-flex  ">
             <div className="  col-lg-3 col-md-3 align-self-end pb-3 p-md-0 ">
-              <img className="rounded w-100" src={cha3} alt="" />
+              <img className="rounded w-100" src={land2} alt="" />
             </div>
             <div className="col-lg-3 col-md-3 ">
-              <img className="rounded w-100" src={cha2} alt="" />
+              <img className="rounded w-100" src={land1} alt="" />
             </div>
             <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
               <p className="help pt-2">Help For the Community</p>
               <h2 className="topic">
                 2021 Fundraiser Campaigns For Social Justice
               </h2>
-              <img src={cha4} alt="" />
+              <img src={land3} alt="" />
               <p className="text-muted py-3">
                 There are many variations of passages of orem Ipsum available,
                 but the majority have suffered alteration in some form, by cted
@@ -161,6 +205,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* satart land */}
 
       <section id="teams">
         <div className="container bg-light  py-5">
@@ -273,51 +318,14 @@ export default function Home() {
         </div>
       </section>
 
-    <section id="startUp">
-      <div className="container my-5 ">
-        <div className="row py-5 ">
-          <div className=" col-md-4 px-lg-3 ">
-            <div className="ps-lg-4 text-center">
-            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
-             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-             <img className="text-danger-subtle" src={icon1} alt="" />
-              <span className="heart-icon position-absolute text-warning"><i className="fa-solid fa-hand-holding-heart fa-3x"></i></span>
-             </div>
-             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Become Volunteer</h3>
-            </div>
-            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">Become a volunteer if you are motivated & ready to support people and the community.</p>
-            </div>
-          </div>
-          <div className=" col-md-4 px-lg-3 ">
-            <div className="ps-lg-4 text-center">
-            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
-             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-             <img className="text-danger-subtle" src={icon1} alt="" />
-              <span className="position-absolute text-info"><i className="fa-solid fa-hand-holding-heart fa-3x"></i></span>
-             </div>
-             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Quick Fundraise</h3>
-            </div>
-            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">The simplest and quickest way to make a donation, so you can support people in need.</p>
-            </div>
-          </div>
-          <div className=" col-md-4 px-lg-3 ">
-            <div className="ps-lg-4 text-center">
-            <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
-             <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-             <img className="text-danger-subtle" src={icon1} alt="" />
-              <span className="position-absolute text-success"><i className="fa-solid fa-hand-holding-heart fa-3x"></i></span>
-             </div>
-             <h3 className="  fs-5  fw-bold mx-md-3 ps-1 pe-lg-5 ">Start Donating</h3>
-            </div>
-            <p className=" text-lg-start  fw-lighter fs-5 text-light-emphasis px-md-0  ">Start donating for our campaigns to support poor people and children returning to school.</p>
-            </div>
-          </div>
-        </div>
-          
-      </div>
-    </section>
-
     
+
+
+
+
+
+
+
       
     </>
 

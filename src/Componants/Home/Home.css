@@ -228,10 +228,39 @@ a{
   }
 /* end quote  */
 
-.heart-icon:hover{
-    /* position: absolute; */
-    /* height: 70px; */
-    font-size: 20px;
-    transition-duration: .2s;
-    
-}
+.icon-container {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .icon-box {
+    font-size: 16px; /* Adjust the initial font size */
+    transition: font-size 0.2s;
+  }
+  
+  .icon-box:hover {
+    font-size: 20px; /* Adjust the enlarged font size */
+    transition: font-size 0.2s;
+  }
+  
+  .icon-box:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: shrink 1s ease forwards;
+    z-index: -1;
+  }
+  
+  @keyframes shrink {
+    0% {
+      font-size: 20px; /* Adjust the enlarged font size */
+    }
+    100% {
+      font-size: 16px; /* Adjust the initial font size */
+    }
+  }
+
+/* ######### */

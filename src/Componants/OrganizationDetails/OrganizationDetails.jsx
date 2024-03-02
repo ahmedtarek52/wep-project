@@ -29,6 +29,7 @@ export default function OrganizationDetails() {
    return (
       <>
          <div className="container py-5">
+            <h2 className='text-center'>Organisation Details</h2>
             <div className="row bg-light">
                <div className="col-md-6 ">
                   {organDetails.images && (

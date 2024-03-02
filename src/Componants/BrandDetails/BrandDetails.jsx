@@ -22,12 +22,19 @@ console.log(allDetails);
   return (
     <div>
       {allDetails.image ? (
-        <div className="brand">
+        <div className="brand container py-5">
+          <div className="row d-flex justify-content-center align-items-center">
+          <div className="col-md-6 ">
           <div className='w-50 '>
             <img className='w-100' src={allDetails.image.url} alt={allDetails.title} />
-            <h4>{allDetails.title}</h4>
           </div>
+          </div>
+          <div className="col-md-6">
+           
+            <h3 className=' text-uppercase'>we are {allDetails.title} group </h3>
           <p>{allDetails.info}</p>
+          </div>
+          </div>
         </div>
       ) : (
         <p>Loading...</p>
