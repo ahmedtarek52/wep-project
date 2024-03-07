@@ -1,0 +1,31 @@
+.donation{
+    position: relative;
+    background-image: url(../images/charity-pagetitle.jpg);
+    height: 300px;
+    object-fit: cover;  
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 5vh;
+    text-align: center;
+    display: flex;
+    }
+    .donation .title { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(0, 21, 47, 0.75);
+    }
+    .donation .hello{
+        position: absolute;
+        bottom: 5%;
+        left: 10%;
+        display: flex;
+    }
+    .donation .title h1 {
+        line-height: 1.38em;
+        font-size: 56px;
+        font-weight: 400;
+        color: white;
+    }

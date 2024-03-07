@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
 import land1 from "../images/cha-childrens-1.jpg";
@@ -15,6 +15,10 @@ import activ4 from "../images/activities4.jpg";
 import activ5 from "../images/activities5.jpg";
 import activ6 from "../images/activities6.jpg";
 import icon1 from "../images/icon-box.png"
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { API_URL } from '../../utils/api';
+
 import "./Home.css";
 
 export default function Home() {
@@ -51,6 +55,28 @@ export default function Home() {
       nextButton.removeEventListener("click", showNextItem);
     };
   }, []);
+
+
+// ####for brands #####
+  const [brands, setBrands] = useState([]);
+
+   async function getBrands() {
+      try {
+         const response = await axios.get(`${API_URL}/brands`);
+         console.log(response); // Check the value of response.data.data
+         setBrands(response.data.brands);
+      } catch (error) {
+         console.log(error);
+      }
+   }
+
+   useEffect(() => {
+      getBrands();
+   }, []);
+
+
+// ####################
+
 
   return (
     <>
@@ -256,7 +282,7 @@ export default function Home() {
         </div>
       </section>
 
-   {/* <!-- start quote --> */}
+      {/* <!-- start quote --> */}
       <section  id="quote" >
      <div className="quote my-5">
           <div className="container position-relative py-5">
@@ -318,8 +344,90 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* start our sponsors */}
+      <section>
+      <div className="container py-3 ">
+       <div className="sponsers text-center">
+       <span className="smile">Sponsors</span>
+        <h2 className=''>Our Sponsers</h2>
+        <p className=" fs-5 text-black-50">No One Has Ever Become Poor by Giving.</p>
+       </div>
+         <div className="row pt-3 shadow-sm p-3 mb-5 rounded align-items-center ">
+            {brands.map((brand, index) => (
+               <div className="col-md-3" key={index}>
+                  <Link to={`/brandDetails/${brand._id}`}>
+                     <div className="brand rounded ">
+                        <img className="w-75 h-100"  src={brand.image.url} alt={brand.title} />
+                     </div>
+                  </Link>
+               </div>
+            ))}
+         </div>
+      </div>
+      </section>
+      {/* end our sponsors */}
+
     
 
+   
+
+
+
+<section className="testimoianl  bg-light shadow-sm p-3 mb-5 rounded">
+
+
+<div className="text-center">
+            <p className="smile m-0">Happy People</p>
+            <h2 className="m-0">What People Say About Us</h2>
+          </div>
+ 
+<div id="carouselExampleIndicators" class="carousel   text-center slide w-75 mx-auto py-5">
+  
+  <div class="carousel-inner ">
+    <div class="carousel-item  active">
+      
+      <img className="clint-img shadow" src={activ1} alt="" />
+      <div class="clint  p-5">
+        <h5 class="fw-bolder">ahmed tarek</h5>
+        <h6 class="text-muted">programmer</h6>
+        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img className="clint-img shadow" src={activ1} alt="" />
+      <div class="clint p-5">
+        <h5 class="fw-bolder">ahmed tarek</h5>
+        <h6 class="text-muted">programmer</h6>
+        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img className="clint-img shadow" src={activ1} alt="" />
+      <div class="clint p-5">
+        <h5 class="fw-bolder">ahmed tarek</h5>
+        <h6 class="text-muted">programmer</h6>
+        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-indicators position-static m-3 ">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+      
+      <img className="w-100 rounded-circle" src={activ1} alt="" />
+    </button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
+    <img className="w-100 rounded-circle" src={activ1} alt="" />
+    </button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
+    <img className="w-100 rounded-circle" src={activ1} alt="" />
+    </button>
+  </div>
+</div>
+</section>
+
+  
+  
 
 
 

@@ -6,10 +6,9 @@ export default function Contact() {
     <>
       <section>
         <div className="contactus">
-          <div className="title ">
+          <div className="title pt-5">
             <h1>contact us</h1>
-
-            <div className="main-title  ">
+            <div className="main-title d-flex pb-5 ">
               <h2 className="text-light">home</h2>
               <h2 className="text-light">contact </h2>
             </div>
