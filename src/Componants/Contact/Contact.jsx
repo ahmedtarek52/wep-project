@@ -5,12 +5,13 @@ export default function Contact() {
   return (
     <>
       <section>
-        <div className="contactus">
-          <div className="title pt-5">
+        <div className="main-banner">
+          <div className="title ">
             <h1>contact us</h1>
-            <div className="main-title d-flex pb-5 ">
-              <h2 className="text-light">home</h2>
-              <h2 className="text-light">contact </h2>
+            <div className='hello  '>
+              <p className='text-light'>
+              <Link to='/' className="unstyled-link"><span>home</span> </Link> &gt; <span>contact</span>
+              </p>
             </div>
           </div>
         </div>
@@ -39,21 +40,12 @@ export default function Contact() {
                         method="POST"
                         id="contactForm"
                         name="contactForm"
-                        className="contactForm "
-                      >
+                        className="contactForm "                      >
                         <div className="row">
                           <div className="col-md-6">
                             <div className="form-group">
-                              <label className="label" for="name">
-                                Full Name
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                name="name"
-                                id="name"
-                                placeholder="Name"
-                              ></input>
+                              <label className="label" for="name"> Full Name</label>
+                              <input type="text" className="form-control"  name="name" id="name" placeholder="Name"></input>
                             </div>
                           </div>
                           <div className="col-md-6">

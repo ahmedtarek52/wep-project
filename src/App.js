@@ -13,6 +13,7 @@ import Register from './Componants/Register/Register';
 import Profile from './Componants/Profile/Profile';
 import Contact from './Componants/Contact/Contact';
 import Donation from './Componants/Donation/Donation';
+import DonationForm from './Componants/Donation/DonationForm';
 
 
 let routers = createBrowserRouter ([
@@ -24,10 +25,11 @@ let routers = createBrowserRouter ([
   { path: 'contact', element: <Contact/> },
   { path: 'profile', element: <Profile/> },
   { path: 'donation', element: <Donation/> },
+  { path: 'donationform', element: <DonationForm/> },
   { path: 'brands', element: <Brands/> },
-  { path: 'brandDetails/:id', element: <BrandDetails/> },
+  { path: 'branddetails/:id', element: <BrandDetails/> },
   { path: 'organization', element: <Organization/>},
-  { path: 'organizationDetails/:id', element: <OrganizationDetails/>},  
+  { path: 'organizationdetails/:id', element: <OrganizationDetails/>},  
 ]}
 ])
 

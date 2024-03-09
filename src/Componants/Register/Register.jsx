@@ -2,7 +2,7 @@ import axios from 'axios';
 import Joi from 'joi';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
 
 
@@ -82,6 +82,7 @@ export default function Register() {
                 <title>Register</title>
             </Helmet>
     
+    <div className="container py-5">
     {errorList.map((err,index)=> {
       if(err.context.label === "password"){
         return <div key={index} className=" alert alert-danger my-2">password invalid</div>
@@ -108,9 +109,22 @@ export default function Register() {
       <label htmlFor="confirmpassword" className=''>confirmpassword:</label>
 
       <input onChange={getUserData} type="password" className='form-control my-input my-2' name='confirmPassword' id="confirmpassword"></input>
-      <button type='submit' className='btn btn-info'>
+      {/* <button type='submit' className='btn btn-info'>
         {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Register'}
-      </button>
+      </button> */}
+      <div className="buttons py-3">
+              <button type="submit" className="text-uppercase text-light">
+              {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Register'}
+              </button>
+            </div>
+
+      <p className="small fw-bold my-3 fs-6">
+                  have an account?{" "}
+                  <Link to="/login" className="mainColor">
+                    login
+                  </Link>
+                </p>
     </form>
+    </div>
   </>)
 }

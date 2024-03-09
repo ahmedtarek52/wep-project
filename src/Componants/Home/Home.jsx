@@ -203,7 +203,7 @@ export default function Home() {
               <img className="rounded w-100" src={land1} alt="" />
             </div>
             <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
-              <p className="help pt-2">Help For the Community</p>
+              <p className="orange-text pt-2">Help For the Community</p>
               <h2 className="topic">
                 2021 Fundraiser Campaigns For Social Justice
               </h2>
@@ -299,7 +299,7 @@ export default function Home() {
       <section id="activites">
         <div className=" activites container py-5 ">
           <div className="border-start  border-4 fw-bolder py-2 ps-3">
-            <p className="smile m-0">Bringing Smile</p>
+            <p className="orange-text m-0">Bringing Smile</p>
             <h2 className="m-0">Our Activities</h2>
           </div>
           <p>Your little support can bring smile to the homeless people</p>
@@ -349,7 +349,7 @@ export default function Home() {
       <section>
       <div className="container py-3 ">
        <div className="sponsers text-center">
-       <span className="smile">Sponsors</span>
+       <span className="orange-text">Sponsors</span>
         <h2 className=''>Our Sponsers</h2>
         <p className=" fs-5 text-black-50">No One Has Ever Become Poor by Giving.</p>
        </div>
@@ -378,7 +378,7 @@ export default function Home() {
 
 
 <div className="text-center">
-            <p className="smile m-0">Happy People</p>
+            <p className="orange-text m-0">Happy People</p>
             <h2 className="m-0">What People Say About Us</h2>
           </div>
  

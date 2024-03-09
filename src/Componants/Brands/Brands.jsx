@@ -27,7 +27,7 @@ export default function Brands() {
          <div className="row g-3 align-items-center justify-content-center ">
             {brands.map((brand, index) => (
                <div className="col-md-4 text-center " key={index}>
-                  <Link to={`/brandDetails/${brand._id}`}>
+                  <Link to={`/branddetails/${brand._id}`}>
                      <div className="brand rounded ">
                         <img className="w-75 h-100"  src={brand.image.url} alt={brand.title} />
                      </div>

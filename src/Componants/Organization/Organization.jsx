@@ -23,7 +23,7 @@ export default function Organization() {
       <div className="row g-3 align-items-center">
          {organizations.map((organization) => (
           <div className="col-md-4" key={organization._id}>
-               <Link to={`/organizationDetails/${organization._id}`}>
+               <Link to={`/organizationdetails/${organization._id}`}>
                   <div className="text-center">
                      <div className="organaztion-img">
                         <img src={organization.images[0].url} alt={organization.title} />

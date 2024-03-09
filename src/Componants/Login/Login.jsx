@@ -2,7 +2,7 @@ import axios from 'axios';
 import Joi from 'joi';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
 
 
@@ -69,8 +69,9 @@ export default function Login() {
                 <meta charSet="utf-8" />
                 <title>Login</title>
             </Helmet>
-    
-    {errorList.map((err,index)=> {
+   <div className="container py-5">
+     
+   {errorList.map((err,index)=> {
       if(err.context.label === "password"){
         return <div key={index} className=" alert alert-danger my-2">password invalid</div>
       }
@@ -81,7 +82,7 @@ export default function Login() {
 
 
     {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
-    <form onSubmit={submitLoginForm} className='mt-5'>
+    <form onSubmit={submitLoginForm} className='mt-5 '>
     
 
       <label htmlFor="email" className=''>email:</label>
@@ -90,9 +91,22 @@ export default function Login() {
       <label htmlFor="password" className=''>password:</label>
       <input onChange={getUserData} type="password" className='form-control my-input my-2' name='password' id="password"></input>
       
-      <button type='submit' className='btn btn-info'>
+      {/* <button type='submit' className='btn btn-info'>
         {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
-      </button>
+      </button> */}
+      <div className="buttons py-3">
+              <button type="submit" className="text-uppercase text-light">
+              {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
+              </button>
+            </div>
+          <p className="small fw-bold my-3 fs-6">
+            Don't have an account?{" "}
+            <Link to="/register" >
+              register
+            </Link>
+          </p>
+     
     </form>
+   </div>
   </>)
 }

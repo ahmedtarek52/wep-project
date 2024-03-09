@@ -1,5 +1,5 @@
 
-.aboutus{
+.main-banner{
 position: relative;
 background-image: url(../images/charity-pagetitle.jpg);
 height: 300px;
@@ -8,9 +8,8 @@ background-size: cover;
 background-position: center center;
 margin-bottom: 5vh;
 text-align: center;
-display: flex;
 }
-.aboutus .title { 
+.main-banner .title { 
 position: absolute;
 left: 0;
 top: 0;
@@ -19,16 +18,22 @@ height: 300px;
 background-color: rgba(0, 21, 47, 0.75);
 }
 .hello{
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
-    display: flex;
+    color: white;
+    line-height: 1.38em;
+    font-size: 34px;
+    font-family: 'Caveat', cursive;
 }
-.aboutus .title h1 {
+.unstyled-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+.main-banner .title h1 {
     line-height: 1.38em;
     font-size: 56px;
     font-weight: 400;
     color: white;
+    margin: 90px auto 0;
 }
 
 /* .news-detail-header-section {
