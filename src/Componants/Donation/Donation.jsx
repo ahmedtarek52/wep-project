@@ -41,7 +41,7 @@ export default function Donation() {
           {Object.keys(donInfo).length > 0 ? (
             <>
              <div className="text-center">
-             <img src={donInfo.image.url} alt={donInfo.title} />
+             <img className='w-100' src={donInfo.image.url} alt={donInfo.title} />
              </div>
               <div>
                 <h3 className='text-center'>{donInfo.title}</h3>

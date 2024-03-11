@@ -45,7 +45,9 @@ h1 , h2 , h3 ,h4{
   font-family: 'Caveat', cursive;
   font-size: 1.5rem ;
 }
-
+.container .orange-border  {
+  border-color: var(--orange-bg) !important;
+}
 /* carousel */
 .carousel{
     margin-top: -40px;
@@ -158,9 +160,7 @@ h1 , h2 , h3 ,h4{
     font-family: 'Quicksand', sans-serif;
 }
 
-.fundraiser .border-start  {
-    border-color: var(--orange-bg) !important;
-}
+
 .fundraiser .border-start  span{
     color: var(--orange-bg);
 }
@@ -172,14 +172,8 @@ h1 , h2 , h3 ,h4{
     height: 320px;
     object-fit: cover;
   }
-  .activites .border-start  {
-    border-color: var(--orange-bg) !important;
-}
-.activites .smile{
-    font-size: 1.5rem ;
-    color: var(--orange-bg);
-    font-family: 'Caveat', cursive;  
-}
+
+
 .activites .image-container{
     overflow: hidden;
     position: relative;
@@ -318,3 +312,33 @@ h1 , h2 , h3 ,h4{
 }
 
 /* ######## */
+
+
+/* .card-img-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card-img:hover {
+  transform: scale(1.1);
+}
+
+.card-body {
+  transition: background-color 0.3s ease;
+}
+
+.card:hover .card-body {
+  background-color: #f8f9fa;
+} */
