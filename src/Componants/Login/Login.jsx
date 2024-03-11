@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 
 
 export default function Login() {
@@ -89,63 +89,62 @@ export default function Login() {
     console.log('Google login failed:', error);
   };
 
-  return (<>
+  return (
+     <>
+        <Helmet>
+           <meta charSet="utf-8" />
+           <title>Login</title>
+        </Helmet>
+        <div className="container py-5">
+           {errorList.map((err, index) => {
+              if (err.context.label === 'password') {
+                 return (
+                    <div key={index} className=" alert alert-danger my-2">
+                       password invalid
+                    </div>
+                 );
+              } else {
+                 return (
+                    <div key={index} className=" alert alert-danger my-2">
+                       {err.message}
+                    </div>
+                 );
+              }
+           })}
 
-<Helmet>
-                <meta charSet="utf-8" />
-                <title>Login</title>
-            </Helmet>
-   <div className="container py-5">
-     
-   {errorList.map((err,index)=> {
-      if(err.context.label === "password"){
-        return <div key={index} className=" alert alert-danger my-2">password invalid</div>
-      }
-      else{
-       return <div key={index} className=" alert alert-danger my-2">{err.message}</div>
-      }
-    })}
+           {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
+           <form onSubmit={submitLoginForm} className="mt-5 ">
+              <label htmlFor="email" className="">
+                 email:
+              </label>
+              <input onChange={getUserData} type="email" className="form-control my-input my-2" name="email" id="email"></input>
 
+              <label htmlFor="password" className="">
+                 password:
+              </label>
+              <input onChange={getUserData} type="password" className="form-control my-input my-2" name="password" id="password"></input>
 
-    {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
-    <form onSubmit={submitLoginForm} className='mt-5 '>
-    
-
-      <label htmlFor="email" className=''>email:</label>
-      <input onChange={getUserData} type="email" className='form-control my-input my-2' name='email' id="email"></input>
-
-      <label htmlFor="password" className=''>password:</label>
-      <input onChange={getUserData} type="password" className='form-control my-input my-2' name='password' id="password"></input>
-      
-      {/* <button type='submit' className='btn btn-info'>
+              {/* <button type='submit' className='btn btn-info'>
         {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
       </button> */}
-      <div className="buttons py-3">
-              <button type="submit" className="text-uppercase text-light">
-              {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
-              </button>
-            </div>
-          <p className="small fw-bold my-3 fs-6">
-            Don't have an account?{" "}
-            <Link to="/register" >
-              register
-            </Link>
-          </p>
-     
-    
-    <GoogleLogin 
+              <div className="buttons py-3">
+                 <button type="submit" className="text-uppercase text-light">
+                    {isLoding === true ? <i className="fas fa-spinner fa-spin"></i> : 'Login'}
+                 </button>
+              </div>
+              <p className="small fw-bold my-3 fs-6">
+                 Don't have an account? <Link to="/register">register</Link>
+              </p>
+
+              {/*     <GoogleLogin 
     clientId="598477576404-rbf07pkjq0cm5jvjb3kmela4o4efpehq.apps.googleusercontent.com"
     buttonText="Login with Google"
     onSuccess={handleGoogleLoginSuccess}
     onFailure={handleGoogleLoginFailure}
     cookiePolicy={'single_host_origin'}
-  />
-    
-        
-      
-
-
-    </form>
-   </div>
-  </>)
+  /> */}
+           </form>
+        </div>
+     </>
+  );
 }
