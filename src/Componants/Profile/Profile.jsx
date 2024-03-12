@@ -168,7 +168,7 @@ alert("Profile has been updated successfully");
                   </div>
                   <div className="col-12 col-md-6">
                     <label htmlFor="inputFirstName" className="form-label">userName</label>
-                    <input onChange={getUpdatedData} type="text" name='userName' className="form-control" id="inputFirstName" />
+                    <input onChange={getUpdatedData} type="text" name='username' className="form-control" id="inputFirstName" />
                   </div>
                   
                   
