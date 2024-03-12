@@ -59,8 +59,6 @@ export default function Home() {
          nextButton.removeEventListener('click', showNextItem);
       };
    }, []);
-
-   // ####for brands #####
    const [brands, setBrands] = useState([]);
 
    async function getBrands() {
@@ -271,7 +269,6 @@ export default function Home() {
             </div>
          </section>
          {/* <!-- end quote --> */}
-
          <section id="activites">
             <div className=" activites container py-5 ">
                <div className=" orange-border border-start  border-4 fw-bolder py-2 ps-3">
