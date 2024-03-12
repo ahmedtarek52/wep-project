@@ -26,10 +26,10 @@ export default function Login() {
   async function sendLoginToApi() {
     let { data } = await axios.post(`${API_URL}/Login`, user);
     if (data.success === true) {
-      setisLoding(false);
-     
-      navigate('/')
-      // // login
+       localStorage.setItem('token', data.token);
+       setisLoding(false);
+       navigate('/');
+       // // login
     }
     else {
       setisLoding(false);
