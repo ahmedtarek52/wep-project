@@ -29,14 +29,12 @@ export default function Register() {
     let { data } = await axios.post(`${API_URL}/register`, user);
 
     if (data.success === true) {
-      console.log(data);
-      setisLoding(false);
-      navigate('/login')
-      // // login
-    }
-    else {
-      setisLoding(false);
-      setError(data.message);
+       setisLoding(false);
+       navigate('/login');
+       // // login
+    } else {
+       setisLoding(false);
+       setError(data.message);
     }
   }
 
