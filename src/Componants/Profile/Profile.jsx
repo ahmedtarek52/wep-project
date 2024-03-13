@@ -83,14 +83,14 @@ alert("Profile has been updated successfully");
               <div className="card-header text-bg-primary">Welcome, {profile.username}</div>
               <div className="card-body">
                 <div className="text-center mb-3">
-                  {/* <img src={profile.profilephoto.url} className="img-fluid w-25 rounded-circle" alt="Luna John"/> */}
+                  <img src={profile.profilephoto?.url} className="img-fluid w-25 rounded-circle" alt="Luna John"/>
                 </div>
                 <h5 className="text-center mb-1">{profile.username}</h5>
-                <p className="text-center text-secondary mb-4">Project Manager</p>
+                <p className="text-center text-secondary mb-4">{profile.role}</p>
                 <ul className="list-group list-group-flush mb-4">
                   <li className="list-group-item d-flex justify-content-between align-items-center">
                     <h6 className="m-0">orders</h6>
-                    <span>{profile.order}</span>
+                    <span>{profile.orders?.length}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center">
                     <h6 className="m-0">coins</h6>
@@ -153,21 +153,18 @@ alert("Profile has been updated successfully");
                   <div className="col-12">
                     <div className="row gy-2">
                       <label className="col-12 form-label m-0">Profile Image</label>
-                      <div className="col-12">
-                        <img src={nophoto} className="img-fluid" alt="Luna John"/>
+                      <div className="col-3">
+                        <img src={profile.profilephoto?.url} className="img-fluid" alt="Luna John"/>
                       </div>
                       <div className="col-12">
-                        <a href="#!" className="d-inline-block bg-primary link-light lh-1 p-2 rounded">
-                          <i className="bi bi-upload"></i>
-                        </a>
-                        <a href="#!" className="d-inline-block bg-danger link-light lh-1 p-2 rounded">
-                          <i className="bi bi-trash"></i>
-                        </a>
+                          <a href="#!" className="d-inline-block bg-primary link-light lh-1 p-2 rounded">
+                            <i className="fa-solid fa-pen-to-square"></i>{' '}
+                          </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-12 col-md-6">
-                    <label htmlFor="inputFirstName" className="form-label">userName</label>
+                    <label htmlFor="inputFirstName" className="form-label">username</label>
                     <input onChange={getUpdatedData} type="text" name='username' className="form-control" id="inputFirstName" />
                   </div>
                   

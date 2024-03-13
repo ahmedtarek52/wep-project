@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
-// import { GoogleLogin } from 'react-google-login';
+
 
 
 export default function Login() {
@@ -26,8 +26,9 @@ export default function Login() {
   async function sendLoginToApi() {
     let { data } = await axios.post(`${API_URL}/Login`, user);
     if (data.success === true) {
+      console.log(data);
       setisLoding(false);
-     
+   //   localStorage.setItem('token',)
       navigate('/')
       // // login
     }
@@ -64,30 +65,7 @@ export default function Login() {
     return scheme.validate(user, { abortEarly: false });
   }
 
-  const handleGoogleLoginSuccess = async (response) => {
-    const { tokenId } = response;
-    // Send the tokenId to your backend for verification and user authentication
-    // Use the tokenId to authenticate the user on the server-side
-    // Example: send the tokenId to your API endpoint for verification
-    try {
-      const { data } = await axios.post(`${API_URL}/google-login`, { tokenId });
-      if (data.success === true) {
-        setisLoding(false);
-        navigate('/');
-        // Login successful
-      } else {
-        setisLoding(false);
-        setError(data.message);
-      }
-    } catch (error) {
-      setisLoding(false);
-      setError('An error occurred while logging in with Google');
-    }
-  };
 
-  const handleGoogleLoginFailure = (error) => {
-    console.log('Google login failed:', error);
-  };
 
   return (
      <>
@@ -136,13 +114,6 @@ export default function Login() {
                  Don't have an account? <Link to="/register">register</Link>
               </p>
 
-              {/*     <GoogleLogin 
-    clientId="598477576404-rbf07pkjq0cm5jvjb3kmela4o4efpehq.apps.googleusercontent.com"
-    buttonText="Login with Google"
-    onSuccess={handleGoogleLoginSuccess}
-    onFailure={handleGoogleLoginFailure}
-    cookiePolicy={'single_host_origin'}
-  /> */}
            </form>
         </div>
      </>
