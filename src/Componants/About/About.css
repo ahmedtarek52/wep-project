@@ -99,3 +99,39 @@ background-color: rgba(0, 21, 47, 0.75);
         transform: rotate(0deg) translate(0px,0px);
     }
 }
+.fundraiser .help{
+  font-size: 1.5rem ;
+  color: var(--orange-bg);
+  font-family: 'Caveat', cursive;  
+}
+.fundraiser .topic{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.fundraiser .border-start  {
+  border-color: var(--orange-bg) !important;
+}
+.fundraiser .border-start  span{
+  color: var(--orange-bg);
+}
+.abouticon {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 5px;
+}
+
+.abouticon .icon-with-text {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.abouticon .icon-with-text i {
+  font-size: 30px;
+  color: var(--orange-bg); 
+
+}
+.abouticon .icon-with-text span {
+  font-size: 25px;
+  color: #000;
+}
