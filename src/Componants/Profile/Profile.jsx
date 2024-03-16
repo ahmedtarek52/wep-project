@@ -174,7 +174,6 @@ export default function Profile() {
                                     <div className="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
                                        <div className="p-2">{profile.username}</div>
                                     </div>
-
                                     <div className="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                        <div className="p-2">Phone</div>
                                     </div>
