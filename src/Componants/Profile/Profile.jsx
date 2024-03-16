@@ -1,30 +1,31 @@
+
 import React, { useEffect, useState } from 'react'
 import nophoto from "../images/no-photo-large-m.png";
 import axios from 'axios';
 import { API_URL } from '../../utils/api';
-import { token } from '../../utils/api';
 
 export default function Profile() {
-  const [profile, setProfile] = useState([]);
-  // const [profileApi, setProfileApi] = useState([]);
 
-  async function getprofileData() {
-    const headers = {
-      'authorization': `Bearer ${token}` ,
-      'Content-Type': 'application/json' 
-    }
-     try {
-        const { data } = await axios.get(`${API_URL}/profile ` , {headers});
-        setProfile(data.data);
-        // console.log(data);
-     } catch (error) {
-        console.log(error);
-     }
-  }
+   const [profile, setProfile] = useState([]);
+   // const [profileApi, setProfileApi] = useState([]);
+   const token = localStorage.getItem('token');
+   async function getprofileData() {
+      const headers = {
+         authorization: `Bearer ${token}`,
+         'Content-Type': 'application/`json',
+      };
+      try {
+         const { data } = await axios.get(`${API_URL}/profile `, { headers });
+         setProfile(data.data);
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
-  useEffect(() => {
-    getprofileData();
-  }, []);
+   useEffect(() => {
+      getprofileData();
+   }, []);
+
 
 const [updateProfile, setupdateProfile] = useState({
 username : '',

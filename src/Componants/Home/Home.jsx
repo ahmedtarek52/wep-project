@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
@@ -506,3 +505,7 @@ export default function Home() {
       </>
    );
 }
+
+
+
+
