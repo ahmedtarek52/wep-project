@@ -27,7 +27,7 @@ export default function Login() {
     let { data } = await axios.post(`${API_URL}/Login`, user);
     if (data.success === true) {
       setisLoding(false);
-     
+      localStorage.setItem('token', data.token);
       navigate('/')
       // // login
     }
@@ -58,8 +58,8 @@ export default function Login() {
       confirmpassword:Joi.ref('password'),
      
     });
-    // console.log(scheme.validate(user));
-
+   //  console.log(scheme.validate(user));
+    return scheme.validate(user, { abortEarly: false });
   };
 
 

@@ -1,9 +1,7 @@
-
 import React, { useEffect, useState } from 'react'
-import nophoto from "../images/no-photo-large-m.png";
 import axios from 'axios';
 import { API_URL } from '../../utils/api';
-import ChangePassword from './ChangePassword';
+
 
 export default function Profile() {
 
@@ -226,6 +224,11 @@ export default function Profile() {
                                     </div>
                                  </form>
                               </div>
+
+
+
+
+
 
                               <div className="tab-pane fade" id="email-tab-pane" role="tabpanel" aria-labelledby="email-tab" tabIndex="0">
                                  <form action="#!">

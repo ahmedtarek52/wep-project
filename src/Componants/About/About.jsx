@@ -108,6 +108,8 @@ export default function About() {
             </div>
             
         </section>
+
+
         <section id="about  ">
         <div className="container py-5 ">
           <div className=" row  d-flex  ">
@@ -142,6 +144,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      
         <section id="about  ">
         <div className="container py-5 ">
           <div className=" row  d-flex  ">
