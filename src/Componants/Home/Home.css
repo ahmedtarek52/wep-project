@@ -151,11 +151,11 @@ h1 , h2 , h3 ,h4{
 }
 
 /* start land */
-/* .fundraiser .help{
+.fundraiser .help{
     font-size: 1.5rem ;
     color: var(--orange-bg);
     font-family: 'Caveat', cursive;  
-} */
+}
 .fundraiser .topic{
     font-family: 'Quicksand', sans-serif;
 }

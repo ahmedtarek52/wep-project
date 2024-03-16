@@ -5,6 +5,8 @@ import arrow from '../images/arrows.png'
 import axios from 'axios'
 import { API_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
+import aboutus from "../images/1.png"
+import aboutus2 from "../images/Add a little bit of body text.png"
 
 
 export default function About() {
@@ -106,6 +108,93 @@ export default function About() {
             </div>
             
         </section>
+        <section id="about  ">
+        <div className="container py-5 ">
+          <div className=" row  d-flex  ">
+            <div className="  col-lg-5 col-md-6 align-self-end pb-3 p-md-0 ">
+              <img className="rounded w-100" src={aboutus} alt="" />
+            </div>
+            <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
+              <p className="help pt-2"><h1>Helping Today</h1></p>
+              <h1 className="topic">
+              Our Goal is to Help Poor People
+              </h1>
+              <p className="text-muted py-3">
+              <h5>Today, we supported the education of 20000 children born in poor
+               families cross 12 undeveloped countries over the world . in the future, our goals are
+               </h5></p>
+              <div className='abouticon'>
+              <div className="icon-with-text">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Have enough food for life.  </span>
+    </div>
+    <div className="icon-with-text">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Poor children can return to school.</span>
+    </div>
+    <div className="icon-with-text">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Support poor people to have better jobs. </span>
+    </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section id="about  ">
+        <div className="container py-5 ">
+          <div className=" row  d-flex  ">
+            <div className="  col-lg-5 col-md-6 align-self-end pb-3 p-md-0 ">
+              <img className="rounded w-100" src={aboutus2} alt="" />
+            </div>
+            <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
+              <p className="help pt-2"><h1>Asked Quesitons</h1></p>
+              <h1 className="topic">
+              We Need Your Help
+              </h1>
+              <div className="accordion" id="accordionExample">
+  <div className="accordion-item">
+    <h2 className="accordion-header">
+      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div className="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div className="accordion-item">
+    <h2 className="accordion-header">
+      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div className="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div className="accordion-item">
+    <h2 class="accordion-header">
+      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div className="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+              </div>
+              </div>
+        </div>
+      </section>
 
 
 
