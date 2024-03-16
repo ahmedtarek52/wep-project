@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../utils/api';
+import ChangePassword from './ChangePassword';
 
 export default function Profile() {
    const [profile, setProfile] = useState([]);
-   // const [profileApi, setProfileApi] = useState([]);
    const token = localStorage.getItem('token');
    async function getprofileData() {
       const headers = {
@@ -127,6 +127,19 @@ export default function Profile() {
                               <li className="nav-item" role="presentation">
                                  <button
                                     className="nav-link"
+                                    id="qrcode-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#qrcode-tab-pane"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="qrcode-tab-pane"
+                                    aria-selected="false">
+                                    qrcode
+                                 </button>
+                              </li>
+                              <li className="nav-item" role="presentation">
+                                 <button
+                                    className="nav-link"
                                     id="email-tab"
                                     data-bs-toggle="tab"
                                     data-bs-target="#email-tab-pane"
@@ -134,7 +147,7 @@ export default function Profile() {
                                     role="tab"
                                     aria-controls="email-tab-pane"
                                     aria-selected="false">
-                                    Donation
+                                    Donation orders
                                  </button>
                               </li>
                               <li className="nav-item" role="presentation">
@@ -197,7 +210,6 @@ export default function Profile() {
                                        </label>
                                        <input onChange={getUpdatedData} type="text" name="username" className="form-control" id="inputFirstName" />
                                     </div>
-
                                     <div className="col-12 col-md-6">
                                        <label htmlFor="inputPhone" className="form-label">
                                           Phone
@@ -212,75 +224,12 @@ export default function Profile() {
                                  </form>
                               </div>
 
-                              <div className="tab-pane fade" id="email-tab-pane" role="tabpanel" aria-labelledby="email-tab" tabIndex="0">
-                                 <form action="#!">
-                                    <fieldset className="row gy-3 gy-md-0">
-                                       <legend className="col-form-label col-12 col-md-3 col-xl-2">Email Alerts</legend>
-                                       <div className="col-12 col-md-9 col-xl-10">
-                                          <div className="form-check">
-                                             <input className="form-check-input" type="checkbox" id="emailChange" />
-                                             <label className="form-check-label" htmlFor="emailChange">
-                                                Email Changed
-                                             </label>
-                                          </div>
-                                          <div className="form-check">
-                                             <input className="form-check-input" type="checkbox" id="passwordChange" />
-                                             <label className="form-check-label" htmlFor="passwordChange">
-                                                Password Changed
-                                             </label>
-                                          </div>
-                                          <div className="form-check">
-                                             <input className="form-check-input" type="checkbox" id="weeklyNewsletter" />
-                                             <label className="form-check-label" htmlFor="weeklyNewsletter">
-                                                Weekly Newsletter
-                                             </label>
-                                          </div>
-                                          <div className="form-check">
-                                             <input className="form-check-input" type="checkbox" id="productPromotions" />
-                                             <label className="form-check-label" htmlFor="productPromotions">
-                                                Product Promotions
-                                             </label>
-                                          </div>
-                                       </div>
-                                    </fieldset>
-                                    <div className="row">
-                                       <div className="col-12">
-                                          <button type="submit" className="btn btn-primary mt-4">
-                                             Save Changes
-                                          </button>
-                                       </div>
-                                    </div>
-                                 </form>
+                              <div className="tab-pane fade" id="email-tab-pane" role="tabpanel" aria-labelledby="email-tab" tabIndex="0"></div>
+                              <div className="qrcode tab-pane fade" id="qrcode-tab-pane">
+                                 <p className="lead text-capitalize">go to our brands partners and scan you qrcode to exchange coins and get your discount</p>
+                                 <img src={profile.qrcode} alt="qrcodeimage" loading="lazy" />
                               </div>
-                              <div className="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabIndex="0">
-                                 <form action="#!">
-                                    <div className="row gy-3 gy-xxl-4">
-                                       <div className="col-12">
-                                          <label htmlFor="currentPassword" className="form-label">
-                                             Current Password
-                                          </label>
-                                          <input type="password" className="form-control" id="currentPassword" />
-                                       </div>
-                                       <div className="col-12">
-                                          <label htmlFor="newPassword" className="form-label">
-                                             New Password
-                                          </label>
-                                          <input type="password" className="form-control" id="newPassword" />
-                                       </div>
-                                       <div className="col-12">
-                                          <label htmlFor="confirmPassword" className="form-label">
-                                             Confirm Password
-                                          </label>
-                                          <input type="password" className="form-control" id="confirmPassword" />
-                                       </div>
-                                       <div className="col-12">
-                                          <button type="submit" className="btn btn-primary">
-                                             Change Password
-                                          </button>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </div>
+                              <ChangePassword />
                            </div>
                         </div>
                      </div>
