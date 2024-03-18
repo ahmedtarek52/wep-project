@@ -36,7 +36,40 @@ export default function About() {
 </div>
 
 
-
+<section id="about  ">
+        <div className="container py-5 ">
+          <div className=" row  d-flex  ">
+            <div className="   col-md-5  ">
+              <img className="rounded w-100" src={aboutus} alt="" />
+            </div>
+            <div className="fundraiser   col-md-6 offset-md-1   ">
+              <p className="help pt-2"><h1>Helping Today</h1></p>
+              <h1 className="topic">
+              Our Goal is to Help Poor People
+              </h1>
+              <p className="text-muted ">
+              <h5>Today, we supported the education of 20000 children born in poor
+               families cross 12 undeveloped countries over the world . in the future, our goals are
+               </h5></p>
+              <div className='abouticon  '>
+              <div className="icon-with-text">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Have enough food for life.  </span>
+    </div>
+    <div className="icon-with-text">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Poor children can return to school.</span>
+    </div>
+    <div className="icon-with-text ">
+              <i class="fa-regular fa-circle-check"></i>
+      <span>Support poor people to have better jobs. </span>
+    </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
         <section className='py-5'>
             <div className="help-today text-light  ">
@@ -79,6 +112,9 @@ export default function About() {
         </section>
 
 
+     
+
+
         <section>
             
             <div className='container py-3'>
@@ -110,40 +146,7 @@ export default function About() {
         </section>
 
 
-        <section id="about  ">
-        <div className="container py-5 ">
-          <div className=" row  d-flex  ">
-            <div className="  col-lg-5 col-md-6 align-self-end pb-3 p-md-0 ">
-              <img className="rounded w-100" src={aboutus} alt="" />
-            </div>
-            <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
-              <p className="help pt-2"><h1>Helping Today</h1></p>
-              <h1 className="topic">
-              Our Goal is to Help Poor People
-              </h1>
-              <p className="text-muted py-3">
-              <h5>Today, we supported the education of 20000 children born in poor
-               families cross 12 undeveloped countries over the world . in the future, our goals are
-               </h5></p>
-              <div className='abouticon'>
-              <div className="icon-with-text">
-              <i class="fa-regular fa-circle-check"></i>
-      <span>Have enough food for life.  </span>
-    </div>
-    <div className="icon-with-text">
-              <i class="fa-regular fa-circle-check"></i>
-      <span>Poor children can return to school.</span>
-    </div>
-    <div className="icon-with-text">
-              <i class="fa-regular fa-circle-check"></i>
-      <span>Support poor people to have better jobs. </span>
-    </div>
-    
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       
         <section id="about  ">

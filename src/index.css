@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  text-transform: capitalize;
 }
 html,
 body {
@@ -17,4 +16,16 @@ a {
 }
 img {
   object-fit: cover;
+}
+.accordion-button:focus,
+.form-control:focus,
+.navbar-toggler:focus,
+.form-check-input:checked,
+.form-check-input:focus {
+  box-shadow: orange;
+  border-color: orange;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #fff;
 }

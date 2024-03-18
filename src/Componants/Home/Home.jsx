@@ -322,11 +322,11 @@ export default function Home() {
                   <h2 className="">Our Sponsers</h2>
                   <p className=" fs-5 text-black-50">No One Has Ever Become Poor by Giving.</p>
                </div>
-               <div className="row pt-3 shadow-sm p-3 mb-5 rounded align-items-center ">
+               <div className="row pt-3 shadow-sm p-3 mb-5 rounded align-items-center  justify-content-center">
                   {brands.map((brand, index) => (
-                     <div className="col-md-3" key={index}>
+                     <div className="col-md-3 " key={index}>
                         <Link to={`/brandDetails/${brand._id}`}>
-                           <div className="brand rounded ">
+                           <div className="brand rounded d-flex justify-content-center ">
                               <img className="w-75 h-100" src={brand.image.url} alt={brand.title} />
                            </div>
                         </Link>
