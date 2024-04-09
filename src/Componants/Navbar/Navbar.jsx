@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({logOut ,userData}) {
   return (
     <>
     <nav className="navbar navbar-expand-lg  bg-light-subtle shadow-sm p-3   sticky-top">
@@ -19,10 +19,7 @@ export default function Navbar() {
             <Link className="nav-link p-2 p-lg-3 active" aria-current="page" href="#">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" to ={"/brands"} >brands</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" to = {"/organization"} >organizations</Link>
+            <Link className="nav-link p-2 p-lg-3" to = {"/profile"} >profile</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link p-2 p-lg-3" to = {"/about"} >About</Link>
@@ -30,9 +27,27 @@ export default function Navbar() {
           <li className="nav-item">
             <Link className="nav-link p-2 p-lg-3" to={"/contact"}>contact</Link>
           </li>
-          <li className="nav-item">
-          <Link className="nav-link p-2 p-lg-3" to = {"/login"} >Login</Link>
+
+          <li className="nav-item dropdown">
+          <Link className="nav-link dropdown-toggle p-2 p-lg-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </Link>
+          <ul className="dropdown-menu">
+    
+          <li><Link className="dropdown-item" to={"/donationform"}>donation form</Link></li>
+            <li><Link className="dropdown-item" to={"/donation"}>donation</Link></li>
+            <li><Link className="dropdown-item" to={"/brands"}>brands</Link></li>
+            <li><Link className="dropdown-item" to={"/organization"}>organization</Link></li>
+          </ul>
+        </li>
+          
+          {userData?
+          <li className="nav-item" onClick={logOut}>
+            <Link className="nav-link p-2 p-lg-3"  >logout</Link>
           </li>
+          :<li className="nav-item">
+          <Link className="nav-link p-2 p-lg-3" to = {"/login"} >Login</Link>
+          </li>}
         </ul>
       </div>
     </div>

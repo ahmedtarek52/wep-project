@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import nophoto from "../images/no-photo-large-m.png";
+// import nophoto from "../images/no-photo-large-m.png";
 import axios from "axios";
+import { Helmet } from 'react-helmet';
 import { API_URL } from "../../utils/api";
 
 export default function Profile() {
@@ -59,6 +60,11 @@ export default function Profile() {
 
   return (
     <>
+     <Helmet>
+            <meta charSet="utf-8" />
+            <title>Profile</title>
+         </Helmet>
+
       <section className="bg-light py-3 py-md-5 py-xl-8">
         <div className="container">
           <div className="row justify-content-md-center">

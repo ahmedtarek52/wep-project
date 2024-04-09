@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from 'react-helmet';
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
 import land1 from "../images/cha-childrens-1.jpg";
@@ -75,6 +76,12 @@ export default function Home() {
 
    return (
       <>
+
+<Helmet>
+            <meta charSet="utf-8" />
+            <title>Home</title>
+         </Helmet>
+
          <section id="startPage">
             <div className="carousel vh-100 w-100  position-relative" ref={carouselRef}>
                <div className="list">

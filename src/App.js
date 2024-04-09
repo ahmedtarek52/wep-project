@@ -14,28 +14,49 @@ import Profile from './Componants/Profile/Profile';
 import Contact from './Componants/Contact/Contact';
 import Donation from './Componants/Donation/Donation';
 import DonationForm from './Componants/Donation/DonationForm';
+import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
+import { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 
 
-let routers = createBrowserRouter ([
-  {path:'/' , element:<Layout /> , children:[
-  { path: '', element: <Home /> },
-  { path: 'login', element: <Login/> },
-  { path: 'register', element: <Register/> },
-  { path: 'about', element: <About /> },
-  { path: 'contact', element: <Contact/> },
-  { path: 'profile', element: <Profile/> },
-  { path: 'donation', element: <Donation/> },
-  { path: 'donationform', element: <DonationForm/> },
-  { path: 'brands', element: <Brands/> },
-  { path: 'branddetails/:id', element: <BrandDetails/> },
-  { path: 'organization', element: <Organization/>},
-  { path: 'organizationdetails/:id', element: <OrganizationDetails/>},  
-]}
-])
+
 
 function App() {
+useEffect(()=>{
+if(localStorage.getItem('token')!==null){
+  saveUserData();
+}
+}, [])
+
+
+  const [userData , setuserData] = useState(null);
+function saveUserData(){
+  let encodedToken = localStorage.getItem("token");
+  let decodedToken = jwtDecode(encodedToken);
+  setuserData(decodedToken);
+  // console.log(decodedToken);
+
+}
+
+
+  let routers = createBrowserRouter ([
+    { path: '/', element: <Layout userData={userData} setuserData={setuserData} />, children: [
+      { path: '', element: <Home /> },
+      { path: 'login', element: <Login saveUserData={saveUserData} /> },
+      { path: 'register', element: <Register /> },
+      { path: 'about', element: <About /> },
+      { path: 'contact', element: <PrivateRoute userData={userData}><Contact /></PrivateRoute> },
+      { path: 'profile', element: <PrivateRoute userData={userData}><Profile /></PrivateRoute> },
+      { path: 'donation', element: <Donation /> },
+      { path: 'donationform', element: <PrivateRoute userData={userData}><DonationForm /></PrivateRoute>},
+      { path: 'brands', element: <Brands /> },
+      { path: 'branddetails/:id', element: <BrandDetails /> },
+      { path: 'organization', element: <Organization /> },
+      { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
+      { path: 'privateroute', element: <PrivateRoute /> },
+  ]}
   
-   
+  ])
 
   return (
     <>

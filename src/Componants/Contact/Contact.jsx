@@ -1,9 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from 'axios';
+import Joi from 'joi';
+import { API_URL } from '../../utils/api';
 import "./Contact.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function Contact() {
+const [errorList, seterrorList] = useState([])
+const [error, setError] = useState('')
+const [isLoding, setisLoding] = useState(false)
+const [contatData , setcontactData]=useState({
+  name:'',
+  email:'',
+  subject:'',
+  message:''
+});
+function getcontactData(eventInfo) {
+  let sendData = { ...contatData};
+  sendData[eventInfo.target.name] = eventInfo.target.value;
+  setcontactData(sendData);
+  // console.log(contatData);
+}
+
+async function sendDataToApi() {
+  let { data } = await axios.post(`${API_URL}/complaints/contact`, contatData);
+  if (data.success === true) {
+    setisLoding(false);
+    console.log(data);
+  }
+  else {
+    setisLoding(false);
+    setError(data.message);
+ }
+  }
+
+
+  function submitContactForm(e) {
+    e.preventDefault();
+    setisLoding(true);
+    
+    let validation = validateContactform();
+      // console.log(validation);
+      if (validation.error) {
+         setisLoding(false);
+         seterrorList(validation.error.details);
+      } else {
+        sendDataToApi();
+      }
+  
+  }
+
+  function validateContactform() {
+    let scheme = Joi.object({
+      email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+      name: Joi.string().required(),
+      subject: Joi.string(),
+      message: Joi.string().required(),
+    });
+   //  console.log(scheme.validate(user));
+    return scheme.validate(contatData, { abortEarly: false });
+  };
+
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contact</title>
+      </Helmet>
       <section>
         <div className="main-banner">
           <div className="title ">
@@ -39,7 +102,30 @@ export default function Contact() {
                       {/* <div id="form-message-success" className="mb-4">
                                         Your message was sent, thank you!
                                         </div> */}
+
+{errorList.map((err, index) => {
+  if (err.context.label === 'email') {
+    return (
+      <div key={index} className=" alert alert-danger my-2">
+        Email invalid
+      </div>
+    );
+  } else if (err.context.label === 'subject' && contatData.subject === '') {
+    // Check if subject field is empty before displaying the error
+    return null;
+  } else {
+    return (
+      <div key={index} className=" alert alert-danger my-2">
+        {err.message}
+      </div>
+    );
+  }
+})}
+
+
+    {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
                       <form
+                      onSubmit={submitContactForm}
                         method="POST"
                         id="contactForm"
                         name="contactForm"
@@ -48,11 +134,12 @@ export default function Contact() {
                         <div className="row">
                           <div className="col-md-6">
                             <div className="form-group">
-                              <label className="label" for="name">
+                              <label className="label" htmlFor="name">
                                 {" "}
                                 Full Name
                               </label>
                               <input
+                              onChange={getcontactData}
                                 type="text"
                                 className="form-control"
                                 name="name"
@@ -63,10 +150,11 @@ export default function Contact() {
                           </div>
                           <div className="col-md-6">
                             <div className="form-group">
-                              <label className="label" for="email">
+                              <label className="label" htmlFor="email">
                                 Email Address
                               </label>
                               <input
+                              onChange={getcontactData}
                                 type="email"
                                 className="form-control"
                                 name="email"
@@ -77,10 +165,11 @@ export default function Contact() {
                           </div>
                           <div className="col-md-12">
                             <div className="form-group">
-                              <label className="label" for="subject">
+                              <label className="label" htmlFor="subject">
                                 Subject
                               </label>
                               <input
+                              onChange={getcontactData}
                                 type="text"
                                 className="form-control"
                                 name="subject"
@@ -91,10 +180,11 @@ export default function Contact() {
                           </div>
                           <div className="col-md-12">
                             <div className="form-group">
-                              <label className="label" for="#">
+                              <label className="label" htmlFor="message">
                                 Message
                               </label>
                               <textarea
+                              onChange={getcontactData}
                                 name="message"
                                 className="form-control"
                                 id="message"
@@ -106,13 +196,11 @@ export default function Contact() {
                           </div>
                           <div className="col-md-12">
                             <div className="form-group">
-                              <input
-                                type="submit"
-                                value="Send Message"
-                                className="btn "
-                              ></input>
-                              {/* <button className='btn text-white '>Send Message</button> */}
-                              {/* <div className="submitting"></div> */}
+                         <div className="buttons py-3">
+                              <button type="submit" className="text-uppercase text-light">
+                                  {isLoding === true ? <i className="fas fa-spinner fa-spin"></i> : 'Send Message'}
+                              </button>
+                            </div>                
                             </div>
                           </div>
                         </div>
@@ -189,7 +277,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
       <section>
         <div>
           <iframe

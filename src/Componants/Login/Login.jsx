@@ -7,7 +7,7 @@ import { API_URL } from '../../utils/api';
 
 
 
-export default function Login() {
+export default function Login({saveUserData}) {
    const [errorList, seterrorList] = useState([]);
    let navigate = useNavigate();
    const [error, setError] = useState('');
@@ -28,6 +28,7 @@ export default function Login() {
     if (data.success === true) {
       setisLoding(false);
       localStorage.setItem('token', data.token);
+      saveUserData();
       navigate('/')
       // // login
     }

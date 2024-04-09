@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Joi from 'joi';
 import { API_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
 // import './Dontation.css'
 
 
 export default function DonationForm() {
+  const [errorList, seterrorList] = useState([])
+const [error, setError] = useState('')
+const [isLoding, setisLoding] = useState(false)
   const [organizations, setOrganizations] = useState([]);
   const [mainForm, setMainForm] = useState({
     itemsName: "",
@@ -20,12 +24,15 @@ export default function DonationForm() {
 
 
   async function sendDataToApi() {
-    try {
       let { data } = await axios.post(`${API_URL}/order/donataionorder`, mainForm);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+      if (data.success === true) {
+      setisLoding(false);
+    console.log(data);
+  }
+  else {
+    setisLoding(false);
+    setError(data.message);
+ }
   }
 
   function getUserData(e) {
@@ -37,19 +44,46 @@ export default function DonationForm() {
       userForm.charity = selectedOrg ? selectedOrg._id : "";
       setSelectedOrganizationTitle(selectedOrg ? selectedOrg.title : "");
     }
-    console.log(userForm);
+    // console.log(userForm);
     setMainForm(userForm);
   }
 
-  function submitData(e) {
+  function submitData(e) { 
+    // if (mainForm.charity) {
+    //   sendDataToApi();
+    // } else {
+    //   console.log("Please select an organization before submitting the form.");
+    // }
     e.preventDefault();
-
-    if (mainForm.charity) {
-      sendDataToApi();
-    } else {
-      console.log("Please select an organization before submitting the form.");
-    }
+    setisLoding(true);
+    
+    let validation = validateDonationform();
+      // console.log(validation);
+      if (validation.error) {
+         setisLoding(false);
+         seterrorList(validation.error.details);
+      } else {
+        sendDataToApi();
+      }
   }
+
+
+  function validateDonationform() {
+    let scheme = Joi.object({
+      itemsName: Joi.string().required(),
+      location: Joi.string().required(),
+      charity: Joi.string().required(),
+      quantity: Joi.string().required(),
+      phone: Joi.string().required(),
+    });
+   //  console.log(scheme.validate(user));
+    return scheme.validate(mainForm, { abortEarly: false });
+  };
+
+
+
+
+
 
   async function getOrganizations() {
     try {
@@ -102,6 +136,27 @@ export default function DonationForm() {
               </div>
             ))}
           </div>
+
+
+          {errorList.map((err, index) => {
+  if (err.context.label === 'charity') {
+    return (
+      <div key={index} className=" alert alert-danger my-2">
+        please select the charity
+      </div>
+    );
+  } else {
+    return (
+      <div key={index} className=" alert alert-danger my-2">
+        {err.message}
+      </div>
+    );
+  }
+})}
+
+
+    {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
+
           <form onSubmit={submitData}>
             <div className="mb-3">
               <label htmlFor="itemsName1" className="form-label">itemsName</label>
@@ -134,7 +189,7 @@ export default function DonationForm() {
 
             <div className="buttons py-3">
               <button type="submit" className="text-uppercase text-light">
-                donate now{" "}
+              {isLoding === true ? <i className="fas fa-spinner fa-spin"></i> : 'donate now'}
                 <span> <i className="fa-solid fa-heart" /></span>
               </button>
             </div>
