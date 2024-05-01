@@ -9,7 +9,7 @@ export default function Brands() {
    async function getBrands() {
       try {
          const response = await axios.get(`${API_URL}/brands`);
-         console.log(response); // Check the value of response.data.data
+         console.log(response);
          setBrands(response.data.brands);
       } catch (error) {
          console.log(error);
@@ -20,7 +20,7 @@ export default function Brands() {
       getBrands();
    }, []);
 
-   // console.log(brands); // Check the value of brands
+
 
    return (
       <div className="container ">

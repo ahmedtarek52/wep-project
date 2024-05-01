@@ -7,10 +7,13 @@ import { API_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import aboutus from "../images/1.png"
 import aboutus2 from "../images/we_need_help_img_2.jpg"
+import { useContext } from 'react';
+import { DataContext } from '../../Context/Store';
 
 
 
 export default function About() {
+  let { organizations} =useContext(DataContext);
     const [donCard, setDonCard] = useState([]);
 
  async function getDonationCard(){
@@ -233,7 +236,7 @@ export default function About() {
                 <div className="accordion-item">
                   <h2 class="accordion-header">
                     <button
-                      className="accordion-button collapsed"
+                      className="accordion-button collapsed border border-primary rounded-pill my-2"
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseThree"
@@ -269,6 +272,22 @@ export default function About() {
           </div>
         </div>
       </section>
+
+
+      <div className="row g-3 align-items-center">
+         {organizations.map((organization) => (
+          <div className="col-md-4" key={organization._id}>
+               <Link to={`/organizationdetails/${organization._id}`}>
+                  <div className="text-center">
+                     <div className="organaztion-img">
+                        <img src={organization.images[0].url} alt={organization.title} />
+                     </div>
+                     {/* <h4>{organization.title}</h4> */}
+                  </div>
+               </Link>
+            </div>
+         ))}
+      </div>
     </>
   );
 }

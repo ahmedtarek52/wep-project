@@ -36,8 +36,8 @@ export default function Navbar({logOut ,userData}) {
     
           <li><Link className="dropdown-item" to={"/donationform"}>donation form</Link></li>
             <li><Link className="dropdown-item" to={"/donation"}>donation</Link></li>
-            <li><Link className="dropdown-item" to={"/brands"}>brands</Link></li>
-            <li><Link className="dropdown-item" to={"/organization"}>organization</Link></li>
+            {/* <li><Link className="dropdown-item" to={"/brands"}>brands</Link></li>
+            <li><Link className="dropdown-item" to={"/organization"}>organization</Link></li> */}
           </ul>
         </li>
           

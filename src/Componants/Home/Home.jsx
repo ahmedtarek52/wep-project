@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef} from "react";
 import { Helmet } from 'react-helmet';
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
@@ -19,13 +19,15 @@ import voltanir2 from "../images/avatar5.jpg"
 import voltanir3 from "../images/avatar6.jpg"
 import voltanir4 from "../images/avatar9.jpg"
 import icon1 from "../images/icon-box.png"
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { API_URL } from '../../utils/api';
+import { useContext } from 'react';
+import { DataContext } from '../../Context/Store';
 
 import "./Home.css";
 
 export default function Home() {
+   let { brands } =useContext(DataContext);
+
    const carouselRef = useRef(null);
 
    useEffect(() => {
@@ -59,20 +61,7 @@ export default function Home() {
          nextButton.removeEventListener('click', showNextItem);
       };
    }, []);
-   const [brands, setBrands] = useState([]);
 
-   async function getBrands() {
-      try {
-         const response = await axios.get(`${API_URL}/brands`);
-         setBrands(response.data.brands);
-      } catch (error) {
-         console.log(error);
-      }
-   }
-
-   useEffect(() => {
-      getBrands();
-   }, []);
 
    return (
       <>
@@ -81,7 +70,7 @@ export default function Home() {
             <meta charSet="utf-8" />
             <title>Home</title>
          </Helmet>
-
+      {/* satart startPage*/}
          <section id="startPage">
             <div className="carousel vh-100 w-100  position-relative" ref={carouselRef}>
                <div className="list">
@@ -140,7 +129,7 @@ export default function Home() {
                </div>
             </div>
          </section>
-
+      {/* satart startUp*/}
          <section id="startUp">
             <div className="interface container pt-3 shadow-sm p-3 mb-5  rounded">
                <div className="row ">
@@ -223,9 +212,9 @@ export default function Home() {
                </div>
             </div>
          </section>
-         {/* satart land */}
 
-         <section id="teams">
+      {/* <!-- start causes--> */}
+         <section id="causes">
             <div className="container bg-light  py-5">
                <div className="row justify-content-center pb-5 mb-3">
                   <div className="col-md-7 heading-section text-center ftco-animate">
@@ -274,7 +263,8 @@ export default function Home() {
                </div>
             </div>
          </section>
-         {/* <!-- end quote --> */}
+         
+         {/* <!-- start activites --> */}
          <section id="activites">
             <div className=" activites container py-5 ">
                <div className=" orange-border border-start  border-4 fw-bolder py-2 ps-3">
@@ -284,8 +274,9 @@ export default function Home() {
                <p>Your little support can bring smile to the homeless people</p>
                <div className="row d-flex gy-3">
                   <div className="col-lg-4 col-md-6">
-                     <div className=" image-container" data-work="winter ">
+                     <div className=" image-container " >
                         <img className="w-100 img-fluid" src={activ1} alt="" />
+                        <p className="layer">Lorem, ipsum dolor.</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
@@ -342,8 +333,8 @@ export default function Home() {
                </div>
             </div>
          </section>
-         {/* end our sponsors */}
 
+         {/* start testimoianl */}
          <section className="testimoianl  bg-light shadow-sm p-3 mb-5 rounded">
             <div className="text-center">
                <p className="orange-text m-0">Happy People</p>
@@ -391,6 +382,7 @@ export default function Home() {
             </div>
          </section>
 
+         {/* start team */}
          <section className="py-3 py-md-5 py-xl-8">
             <div className="container">
                <div className="row ">
@@ -509,6 +501,10 @@ export default function Home() {
                </div>
             </div>
          </section>
+
+
+
+         
       </>
    );
 }

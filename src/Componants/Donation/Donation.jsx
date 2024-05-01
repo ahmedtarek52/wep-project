@@ -3,15 +3,21 @@ import axios from 'axios'
 import { API_URL } from '../../utils/api';
 import './Dontation.css'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContext } from '../../Context/Store';
+
 
 export default function Donation() {
+let { brands , organizations} =useContext(DataContext);
+
+
   const [donInfo, setDonInfo] = useState([]);
 
   async function getSingleDonation() {
     try {
       const { data } = await axios.get(`${API_URL}/donationcard/654a23eaeb5399d6d7875421`);
       setDonInfo(data.data);
-      console.log(data.data);
+      // console.log(data.data);
     } catch (error) {
       console.error(error);
     }
@@ -61,6 +67,35 @@ export default function Donation() {
         </div>
       </section>
 
+     
+      <div className="container ">
+         <div className="row g-3 align-items-center justify-content-center ">
+            {brands.map((brand, index) => (
+               <div className="col-md-3 text-center " key={index}>
+                  <Link to={`/branddetails/${brand._id}`}>
+                     <div className="brand rounded ">
+                        <img className="w-75 h-100"  src={brand.image.url} alt={brand.title} />
+                     </div>
+                  </Link>
+               </div>
+            ))}
+         </div>
+      </div>
+
+      <div className="row g-3 align-items-center">
+         {organizations.map((organization) => (
+          <div className="col-md-4" key={organization._id}>
+               <Link to={`/organizationdetails/${organization._id}`}>
+                  <div className="text-center">
+                     <div className="organaztion-img">
+                        <img src={organization.images[0].url} alt={organization.title} />
+                     </div>
+                     {/* <h4>{organization.title}</h4> */}
+                  </div>
+               </Link>
+            </div>
+         ))}
+      </div>
 </>
   )
 }

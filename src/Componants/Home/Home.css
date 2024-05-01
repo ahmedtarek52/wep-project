@@ -171,6 +171,9 @@ h1 , h2 , h3 ,h4{
   .image-container img {
     height: 320px;
     object-fit: cover;
+    width: 100%;
+    display: block;
+    transition: .5s;
   }
 
 
@@ -178,7 +181,40 @@ h1 , h2 , h3 ,h4{
     overflow: hidden;
     position: relative;
   }
-  .activites .image-container::before {
+
+  .image-container img{
+    width: 100%;
+    display: block;
+    transition: .5s;
+  }
+  .image-container .layer{
+    width: 100%;
+    height: 0;
+    background: rgb(0,0,0,0.6);
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 40px;
+    color:#fff;
+    transition: .5s;
+  }
+  .image-container:hover img{
+    transform: scale(1.1);
+  }
+  .image-container:hover .layer{
+    height: 100%;
+
+}
+  
+
+
+  /* .activites .image-container::before {
     content: attr(data-work);
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
@@ -192,12 +228,11 @@ h1 , h2 , h3 ,h4{
     transition: 0.3s;
     font-size: 1.5rem;
     transform: translateX(-100% ) ;
-    /* transition: ease-in-out 2s 5s linear !important ; */
   }
   .activites .image-container:hover::before {
     transform: translateX(0);
     
-  }
+  } */
 /* end activites */
 
 /* start quote  */

@@ -4,9 +4,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './Componants/Layout/Layout';
 import Home from './Componants/Home/Home';
 import About from './Componants/About/About';
-import Brands from './Componants/Brands/Brands';
+// import Brands from './Componants/Brands/Brands';
 import BrandDetails from './Componants/BrandDetails/BrandDetails';
-import Organization from './Componants/Organization/Organization';
+// import Organization from './Componants/Organization/Organization';
 import OrganizationDetails from './Componants/OrganizationDetails/OrganizationDetails';
 import Login from './Componants/Login/Login';
 import Register from './Componants/Register/Register';
@@ -17,6 +17,7 @@ import DonationForm from './Componants/Donation/DonationForm';
 import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
+import DataContextProvide from './Context/Store';
 
 
 
@@ -49,9 +50,9 @@ function saveUserData(){
       { path: 'profile', element: <PrivateRoute userData={userData}><Profile /></PrivateRoute> },
       { path: 'donation', element: <Donation /> },
       { path: 'donationform', element: <PrivateRoute userData={userData}><DonationForm /></PrivateRoute>},
-      { path: 'brands', element: <Brands /> },
+      // { path: 'brands', element: <Brands /> },
       { path: 'branddetails/:id', element: <BrandDetails /> },
-      { path: 'organization', element: <Organization /> },
+      // { path: 'organization', element: <Organization /> },
       { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
       { path: 'privateroute', element: <PrivateRoute /> },
   ]}
@@ -59,9 +60,12 @@ function saveUserData(){
   ])
 
   return (
-    <>
-   <RouterProvider router={routers}/>
-    </>
+  <DataContextProvide>
+    <RouterProvider router={routers}/>
+  </DataContextProvide>
+
+   
+
   )
 
 
