@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import nophoto from "../images/no-photo-large-m.png";
 import axios from "axios";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import { API_URL } from "../../utils/api";
 
 export default function Profile() {
@@ -16,7 +16,7 @@ export default function Profile() {
     try {
       const { data } = await axios.get(`${API_URL}/profile `, { headers });
       setProfile(data.data);
-      // console.log(data);
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +46,7 @@ export default function Profile() {
       headers,
     });
     if (data.success === true) {
-      console.log(data.data);
+      // console.log(data.data);
       alert("Profile has been updated successfully");
     } else {
       console.log("nodata");
@@ -60,10 +60,10 @@ export default function Profile() {
 
   return (
     <>
-     <Helmet>
-            <meta charSet="utf-8" />
-            <title>Profile</title>
-         </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Profile</title>
+      </Helmet>
 
       <section className="bg-light py-3 py-md-5 py-xl-8">
         <div className="container">
@@ -86,7 +86,7 @@ export default function Profile() {
               <div className="row gy-4">
                 <div className="col-12">
                   <div className="card widget-card border-light shadow-sm">
-                    <div className="card-header text-bg-primary">
+                    <div className="card-header custom-bg text-white">
                       Welcome, {profile.username}
                     </div>
                     <div className="card-body">
@@ -291,13 +291,17 @@ export default function Profile() {
                       </form>
                     </div>
 
-
-                 
-                     <div className="qrcode tab-pane fade" id="qrcode-tab-pane">
-                        <p className="lead text-capitalize">go to our brands partners and scan you qrcode to exchange coins and get your discount</p>
-                        <img src={profile.qrcode} alt="qrcodeimage" loading="lazy" />                      
-                     </div>
-                   
+                    <div className="qrcode tab-pane fade" id="qrcode-tab-pane">
+                      <p className="lead text-capitalize">
+                        go to our brands partners and scan you qrcode to
+                        exchange coins and get your discount
+                      </p>
+                      <img
+                        src={profile.qrcode}
+                        alt="qrcodeimage"
+                        loading="lazy"
+                      />
+                    </div>
 
                     <div
                       className="tab-pane fade"
@@ -307,12 +311,19 @@ export default function Profile() {
                       tabIndex="0"
                     >
                       <form action="#!">
-                        
+                        <ul>
+                          {profile.orders?.map((order) => (
+                            <li key={order._id} className="order-item">
+                              <h3>Item: {order.itemsName}</h3>
+                              <p><span className=" fw-semibold fs-4">Location: </span><span className="fs-4 text-primary">{order.location}</span></p>
+                              <p>Charity: {order.charity.title}</p>
+                              <p>Quantity: {order.quantity}</p>
+                              <p>Status: {order.status}</p>
+                            </li>
+                          )) || <li>No orders available</li>}
+                        </ul>
                       </form>
                     </div>
-
-
-
 
                     <div
                       className="tab-pane fade"

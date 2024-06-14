@@ -10,7 +10,7 @@ function DataContextProvide(props)
 
     async function getAllData(mediaType,callback) {
        try {
-          const {data} = await axios.get(`https://lovely-red-overshirt.cyclic.app/${mediaType}`);
+          const {data} = await axios.get(`https://donation-system-utjy.onrender.com/${mediaType}`);
         // console.log(data.result);
           callback(data.result);
        } catch (error) {

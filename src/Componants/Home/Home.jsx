@@ -75,7 +75,7 @@ export default function Home() {
             <div className="carousel vh-100 w-100  position-relative" ref={carouselRef}>
                <div className="list">
                   <div className="item  position-absolute carousel-item active">
-                     <img className="w-100 h-100" src={startPage} alt="" />
+                     <img className="w-100 h-100" src={startPage} alt="startPage" loading="lazy" />
                      <div className="content col-md-6  position-absolute text-light">
                         <p className="author">we help you</p>
                         <h1 className="topic text-uppercase">save the childrens</h1>
@@ -97,7 +97,7 @@ export default function Home() {
                      </div>
                   </div>
                   <div className="item position-absolute carousel-item active">
-                     <img className="w-100 h-100" src={startPage1} alt="" />
+                     <img className="w-100 h-100" src={startPage1} alt="startPage" loading="lazy"/>
                      <div className="content col-md-6 position-absolute text-light ">
                         <p className="author">we help you</p>
                         <h1 className="topic text-uppercase">make differance today</h1>
@@ -129,6 +129,7 @@ export default function Home() {
                </div>
             </div>
          </section>
+
       {/* satart startUp*/}
          <section id="startUp">
             <div className="interface container pt-3 shadow-sm p-3 mb-5  rounded">
@@ -137,7 +138,7 @@ export default function Home() {
                      <div className="ps-lg-4 text-center">
                         <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
                            <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-                              <img className="text-danger-subtle" src={icon1} alt="" />
+                              <img className="text-danger-subtle" src={icon1} alt="icon" loading="lazy" />
                               <span className=" position-absolute text-warning">
                                  <i className="fa-solid fa-hand-holding-heart fa-3x"></i>
                               </span>
@@ -151,7 +152,7 @@ export default function Home() {
                      <div className="ps-lg-4 text-center">
                         <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
                            <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-                              <img className="text-danger-subtle" src={icon1} alt="" />
+                              <img className="text-danger-subtle" src={icon1} alt="icon" loading="lazy" />
                               <span className="position-absolute text-info">
                                  <i className="fa-solid fa-wallet fa-3x"></i>
                               </span>
@@ -165,7 +166,7 @@ export default function Home() {
                      <div className="ps-lg-4 text-center">
                         <div className="box d-lg-flex pe-2  align-items-center justify-content-center ">
                            <div className="only  py-3   d-flex align-items-center justify-content-center position-relative">
-                              <img className="text-danger-subtle" src={icon1} alt="" />
+                              <img className="text-danger-subtle" src={icon1} alt="icon" loading="lazy"/>
                               <span className=" position-absolute text-success">
                                  <i className="fa-solid fa-heart-circle-check fa-3x"></i>
                               </span>
@@ -184,10 +185,10 @@ export default function Home() {
             <div className="container py-5 ">
                <div className=" row  d-flex  ">
                   <div className="  col-lg-3 col-md-3 align-self-end pb-3 p-md-0 ">
-                     <img className="rounded w-100" src={land2} alt="" />
+                     <img className="rounded w-100" src={land2} alt="lnadImg" loading="lazy"/>
                   </div>
                   <div className="col-lg-3 col-md-3 ">
-                     <img className="rounded w-100" src={land1} alt="" />
+                     <img className="rounded w-100" src={land1} alt="landImg" loading="lazy"/>
                   </div>
                   <div className="fundraiser  col-lg-5 col-md-6 ms-lg-5  ">
                      <p className="orange-text pt-2">Help For the Community</p>
@@ -225,28 +226,28 @@ export default function Home() {
                <div className="row">
                   <div className="  col-lg-4 col-md-6">
                      <div className="card">
-                        <img src={cause1} className="card-img-top w-100" alt="..." />
+                        <img src={cause1} className="card-img-top w-100" alt="causes" loading="lazy"/>
                         <div className="card-body">
-                           <h5 className="card-title">Card title</h5>
-                           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           <h5 className="card-title">Joy Amid Hardship</h5>
+                           <p className="card-text">A heartwarming moment of a boy and his sister finding joy in the face of adversity</p>
                         </div>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="card">
-                        <img src={cause2} className="card-img-top w-100" alt="..." />
+                        <img src={cause2} className="card-img-top w-100" alt="causes" loading="lazy"/>
                         <div className="card-body">
-                           <h5 className="card-title">Card title</h5>
-                           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           <h5 className="card-title">Spreading Happiness</h5>
+                           <p className="card-text">We aim to bring smiles to the faces of those in need, turning their sadness into happiness.</p>
                         </div>
                      </div>
                   </div>
                   <div className="  col-lg-4 col-md-6">
                      <div className="card">
-                        <img src={cause3} className="card-img-top w-100" alt="..." />
+                        <img src={cause3} className="card-img-top w-100" alt="causes" loading="lazy" />
                         <div className="card-body">
-                           <h5 className="card-title">Card title</h5>
-                           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           <h5 className="card-title">Building Better Lives</h5>
+                           <p className="card-text">Our mission is to support families, helping them lead better lives.</p>
                         </div>
                      </div>
                   </div>
@@ -275,33 +276,33 @@ export default function Home() {
                <div className="row d-flex gy-3">
                   <div className="col-lg-4 col-md-6">
                      <div className=" image-container " >
-                        <img className="w-100 img-fluid" src={activ1} alt="" />
+                        <img className="w-100 img-fluid" src={activ1} alt="active" loading="lazy"/>
                         <p className="layer">Lorem, ipsum dolor.</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
-                        <img className="w-100 img-fluid" src={activ2} alt="" />
+                        <img className="w-100 img-fluid" src={activ2} alt="active" loading="lazy" />
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
-                        <img className="w-100 img-fluid" src={activ3} alt="" />
+                        <img className="w-100 img-fluid" src={activ3} alt="active" loading="lazy"/>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
-                        <img className="w-100 img-fluid" src={activ4} alt="" />
+                        <img className="w-100 img-fluid" src={activ4} alt="active" loading="lazy"/>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
-                        <img className="w-100 img-fluid" src={activ5} alt="" />
+                        <img className="w-100 img-fluid" src={activ5} alt="active" loading="lazy"/>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
-                        <img className="w-100 img-fluid" src={activ6} alt="" />
+                        <img className="w-100 img-fluid" src={activ6} alt="active" loading="lazy"/>
                      </div>
                   </div>
                </div>
@@ -325,7 +326,7 @@ export default function Home() {
                      <div className="col-md-3 " key={index}>
                         <Link to={`/brandDetails/${brand._id}`}>
                            <div className="brand rounded d-flex justify-content-center ">
-                              <img className="w-75 h-100" src={brand.image.url} alt={brand.title} />
+                              <img className="w-75 h-100" src={brand.image.url} alt={brand.title} loading="lazy"/>
                            </div>
                         </Link>
                      </div>
@@ -344,7 +345,7 @@ export default function Home() {
             <div id="carouselExampleIndicators" className="carousel   text-center slide w-75 mx-auto py-5">
                <div className="carousel-inner ">
                   <div className="carousel-item  active">
-                     <img className="clint-img shadow" src={activ1} alt="" />
+                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy"/>
                      <div className="clint  p-5">
                         <h5 className="fw-bolder">ahmed tarek</h5>
                         <h6 className="text-muted">programmer</h6>
@@ -352,7 +353,7 @@ export default function Home() {
                      </div>
                   </div>
                   <div className="carousel-item">
-                     <img className="clint-img shadow" src={activ1} alt="" />
+                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy"/>
                      <div className="clint p-5">
                         <h5 className="fw-bolder">ahmed tarek</h5>
                         <h6 className="text-muted">programmer</h6>
@@ -360,7 +361,7 @@ export default function Home() {
                      </div>
                   </div>
                   <div className="carousel-item">
-                     <img className="clint-img shadow" src={activ1} alt="" />
+                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy" />
                      <div className="clint p-5">
                         <h5 className="fw-bolder">ahmed tarek</h5>
                         <h6 className="text-muted">programmer</h6>
@@ -370,13 +371,13 @@ export default function Home() {
                </div>
                <div className="carousel-indicators position-static m-3 ">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1">
-                     <img className="w-100 rounded-circle" src={activ1} alt="" />
+                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
                   </button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                     <img className="w-100 rounded-circle" src={activ1} alt="" />
+                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
                   </button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                     <img className="w-100 rounded-circle" src={activ1} alt="" />
+                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
                   </button>
                </div>
             </div>
@@ -402,7 +403,7 @@ export default function Home() {
                      <div className="card border-0">
                         <figure className="card-img-top m-0 overflow-hidden bsb-overlay-hover">
                            <a href="#!">
-                              <img className="img-fluid w-100" loading="lazy" src={voltanir1} alt="" />
+                              <img className="img-fluid w-100" loading="lazy" src={voltanir1} alt="voltanir" />
                            </a>
                         </figure>
                         <div className="card-body border bg-white p-4">
@@ -427,7 +428,7 @@ export default function Home() {
                      <div className="card border-0">
                         <figure className="card-img-top m-0 overflow-hidden bsb-overlay-hover">
                            <a href="#!">
-                              <img className="img-fluid w-100" loading="lazy" src={voltanir2} alt="" />
+                              <img className="img-fluid w-100" loading="lazy" src={voltanir2} alt="voltanir" />
                            </a>
                         </figure>
                         <div className="card-body border bg-white p-4">
@@ -452,7 +453,7 @@ export default function Home() {
                      <div className="card border-0">
                         <figure className="card-img-top m-0 overflow-hidden bsb-overlay-hover">
                            <a href="#!">
-                              <img className="img-fluid w-100" loading="lazy" src={voltanir4} alt="" />
+                              <img className="img-fluid w-100" loading="lazy" src={voltanir4} alt="voltanir" />
                            </a>
                         </figure>
                         <div className="card-body border bg-white p-4">
@@ -477,7 +478,7 @@ export default function Home() {
                      <div className="card border-0">
                         <figure className="card-img-top m-0 ">
                            <a href="#!">
-                              <img className="img-fluid w-100 " loading="lazy" src={voltanir3} alt="" />
+                              <img className="img-fluid w-100 " loading="lazy" src={voltanir3} alt="voltanir" />
                            </a>
                         </figure>
                         <div className="card-body border bg-white p-4 ">

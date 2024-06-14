@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
-
+import loginImg from "../images/login.png"
+import "./Login.css"
 
 
 export default function Login({saveUserData}) {
@@ -71,7 +72,15 @@ export default function Login({saveUserData}) {
             <meta charSet="utf-8" />
             <title>Login</title>
          </Helmet>
-         <div className="container py-5">
+         <div className="d-flex justify-content-center align-items-center pt-5">
+    <div className="custom-container custom-mobile-style">
+      <div className="mx-5 my-5">
+        <div className="d-flex justify-content-center align-items-center py-5 position-relative">
+          <img className="w-100 rounded-circle position-absolute" src={loginImg} alt="loginImg" loading="lazy" />
+        </div>
+               <div className='text-center pt-5'>
+               <h1 className='fw-semibold'>Login</h1>
+               </div>
             {errorList.map((err, index) => {
                if (err.context.label === 'password') {
                   return (
@@ -89,23 +98,23 @@ export default function Login({saveUserData}) {
             })}
 
             {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
-            <form onSubmit={submitLoginForm} className="mt-5 ">
+            <form onSubmit={submitLoginForm} className=" ">
                <label htmlFor="email" className="">
-                  email:
+                  {/* email: */}
                </label>
-               <input onChange={getUserData} type="email" className="form-control my-input my-2" name="email" id="email"></input>
+               <input onChange={getUserData} type="email" className="form-control my-input " name="email" id="email" placeholder='Email'></input>
 
                <label htmlFor="password" className="">
-                  password:
+                  {/* password: */}
                </label>
-               <input onChange={getUserData} type="password" className="form-control my-input my-2" name="password" id="password"></input>
+               <input onChange={getUserData} type="password" className="form-control my-input " name="password" id="password" placeholder='Password'></input>
 
                {/* <button type='submit' className='btn btn-info'>
         {isLoding === true ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}
       </button> */}
               <div className="buttons py-3">
-                 <button type="submit" className="text-uppercase text-light">
-                    {isLoding === true ? <i className="fas fa-spinner fa-spin"></i> : 'Login'}
+                 <button type="submit" className="text-uppercase text-light w-100">
+                    {isLoding === true ? <i className="fas fa-spinner fa-spin "></i> : 'Login'}
                  </button>
               </div>
               <p className="small fw-bold my-3 fs-6">
@@ -114,6 +123,9 @@ export default function Login({saveUserData}) {
 
   
            </form>
+            </div>
+            </div>
+           
         </div>
      </>
   );

@@ -7,6 +7,7 @@
     --orange-bg:#f74f22;
     --font-color:#fff;
   }
+  
   body{
     font-family: var(--main-font);
     font-family: 'Caveat', cursive;
@@ -14,12 +15,24 @@
     font-family: 'Roboto', sans-serif;
     font-family: 'Work Sans', sans-serif;
   }
+  /* .nav-link.active, .dropdown-item.active {
+    color: #f74f22 !important;
+  } */
+  
+  .custom-bg {
+    background-color: var(--orange-bg) !important;
+  }
+  
+  .custom-border {
+    border-color: var(--orange-bg) !important;
+  }
   .contactForm .label {
     color: #000;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
 }
+
   .buttons button{
     border: none;
     background-color: var(--orange-bg);
@@ -189,8 +202,10 @@ h1 , h2 , h3 ,h4{
   }
   .image-container .layer{
     width: 100%;
-    height: 0;
+    height: 100%;
     background: rgb(0,0,0,0.6);
+    transition:opacity 0.5s ease-in;
+    opacity:0;
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -202,13 +217,12 @@ h1 , h2 , h3 ,h4{
     text-align: center;
     font-size: 40px;
     color:#fff;
-    transition: .5s;
   }
   .image-container:hover img{
     transform: scale(1.1);
   }
   .image-container:hover .layer{
-    height: 100%;
+   opacity:1;
 
 }
   

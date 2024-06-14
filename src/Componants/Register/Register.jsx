@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
-
+import registerImg from "../images/register.png"
 
 export default function Register() {
   const [errorList, seterrorList] = useState([])
@@ -80,8 +80,10 @@ export default function Register() {
                 <title>Register</title>
             </Helmet>
     
-    <div className="container py-5">
-    {errorList.map((err,index)=> {
+    <div className="container py-1">
+      <div className='row d-flix justify-content-center align-items-center'>
+      <div className="col-md-6">
+      {errorList.map((err,index)=> {
       if(err.context.label === "password"){
         return <div key={index} className=" alert alert-danger my-2">password invalid</div>
       }
@@ -94,7 +96,7 @@ export default function Register() {
     {error.length > 0 ? <div className=" alert alert-danger my-2">{error}</div> : ''}
     <form onSubmit={submitRegisterForm} className='mt-5'>
       <label htmlFor="username" className=''>username:</label>
-      <input onChange={getUserData} type="text" className='form-control my-input my-2' name='username' id="username"></input>
+      <input onChange={getUserData} type="text" className='form-control my-input my-2' name='username' id="username" placeholder='User Name'></input>
 
       <label htmlFor="email" className=''>email:</label>
       <input onChange={getUserData} type="email" className='form-control my-input my-2' name='email' id="email"></input>
@@ -123,6 +125,14 @@ export default function Register() {
                   </Link>
                 </p>
     </form>
+   
+      </div>
+      <div className="col-md-6 ">
+    <div className='d-md-block d-none'>
+    <img className='w-100' src={registerImg} alt="registerImg" loading='lazy' />
+    </div>
+    </div>
+      </div>
     </div>
   </>)
 }

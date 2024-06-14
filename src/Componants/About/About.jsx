@@ -46,31 +46,31 @@ export default function About() {
         <div className="container py-5 ">
           <div className=" row  d-flex  ">
             <div className="   col-md-5  ">
-              <img className="rounded w-100" src={aboutus} alt="" />
+              <img className="rounded w-100" src={aboutus} alt="aboutus" loading='lazy' />
             </div>
             <div className="fundraiser   col-md-6 offset-md-1   ">
-              <p className="help pt-2">
+              <div className="help pt-2">
                 <h1>Helping Today</h1>
-              </p>
+              </div>
               <h1 className="topic">Our Goal is to Help Poor People</h1>
-              <p className="text-muted ">
+              <div className="text-muted ">
                 <h5>
                   Today, we supported the education of 20000 children born in
                   poor families cross 12 undeveloped countries over the world .
                   in the future, our goals are
                 </h5>
-              </p>
+              </div>
               <div className="abouticon  ">
                 <div className="icon-with-text">
-                  <i class="fa-regular fa-circle-check"></i>
+                  <i className="fa-regular fa-circle-check"></i>
                   <span>Have enough food for life. </span>
                 </div>
                 <div className="icon-with-text">
-                  <i class="fa-regular fa-circle-check"></i>
+                  <i className="fa-regular fa-circle-check"></i>
                   <span>Poor children can return to school.</span>
                 </div>
                 <div className="icon-with-text ">
-                  <i class="fa-regular fa-circle-check"></i>
+                  <i className="fa-regular fa-circle-check"></i>
                   <span>Support poor people to have better jobs. </span>
                 </div>
               </div>
@@ -84,21 +84,21 @@ export default function About() {
           <div className="container ">
             <div className="row">
               <div className="col-md-5 ">
-                <p className="author">Helping Today</p>
-                <h2>We’re Helping People in Need Around the World</h2>
+                <div className="author">Helping Today</div>
+                <h2>We are Helping People in Need Around the World</h2>
                 <div className="d-flex">
                   <div className="play-box mt-5 me-5">
                     <span className="fa fa-play fa-2x text-black"></span>
                   </div>
-                  <a href="">
-                  <img className="arrow" src={arrow} alt="" />
-                  </a>
+                  {/* <a href=""> */}
+                  <img className="arrow" src={arrow} alt="arrow" loading='lazy' />
+                  {/* </a> */}
                 </div>
               </div>
               <div className="col-md-6 offset-md-1 ">
                 <div className="big-box d-flex py-5">
                   <span className="main-box ">
-                    <img className=" small-icon" src={helthicon} alt="" />
+                    <img className=" small-icon" src={helthicon} alt="" loading='lazy'/>
                   </span>
                   <div className="ps-4">
                     <h4>Healthy Food</h4>
@@ -111,7 +111,7 @@ export default function About() {
                 <hr />
                 <div className="big-box d-flex py-5">
                   <span className="main-box ">
-                    <img className=" small-icon" src={helthicon} alt="" />
+                    <img className=" small-icon" src={helthicon} alt="" loading='lazy'/>
                   </span>
                   <div className="ps-4">
                     <h4>Healthy Food</h4>
@@ -134,7 +134,7 @@ export default function About() {
               <>
                 <div className="col-md-6">
                   <img
-                    className="w-100 "
+                    className="w-100 " loading='lazy'
                     src={donCard[0].image.url}
                     alt={donCard[0].title}
                   />
@@ -164,11 +164,11 @@ export default function About() {
 
       <section id="about  ">
         <div className="container py-5 ">
-          <div className=" row  d-flex  ">           
+          <div className=" row  d-flex  ">
             <div className="fundraiser  col-md-5 ">
-              <p className="help pt-2">
+              <div className="help pt-2">
                 <h1>Asked Quesitons</h1>
-              </p>
+              </div>
               <h1 className="topic">We Need Your Help</h1>
               <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
@@ -234,7 +234,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="accordion-item">
-                  <h2 class="accordion-header">
+                  <h2 className="accordion-header">
                     <button
                       className="accordion-button collapsed border border-primary rounded-pill my-2"
                       type="button"
@@ -267,27 +267,44 @@ export default function About() {
               </div>
             </div>
             <div className="  col-md-6 offset-md-1 align-self-end pb-3 p-md-0 ">
-              <img className="need-help rounded" src={aboutus2} alt="" />
+              <img className="need-help rounded" src={aboutus2} alt="about" loading='lazy'/>
             </div>
           </div>
         </div>
       </section>
 
-
-      <div className="row g-3 align-items-center">
-         {organizations.map((organization) => (
+      <div > 
+        <div className='container'>
+        <p>
+          We are proud to announce our collaboration with those charities, a
+          dedicated organizations those shares our vision for a better future.
+          Through this partnership, we aim to amplify our efforts and bring
+          about meaningful change. Together, we are committed to making a
+          positive impact in our community and beyond. Join us as we work hand
+          in hand to support our project and uplift those in need.
+        </p>
+        </div>
+     
+        <div className="row g-3 align-items-center">
+        {organizations.map((organization) => (
           <div className="col-md-4" key={organization._id}>
-               <Link to={`/organizationdetails/${organization._id}`}>
-                  <div className="text-center">
-                     <div className="organaztion-img">
-                        <img src={organization.images[0].url} alt={organization.title} />
-                     </div>
-                     {/* <h4>{organization.title}</h4> */}
-                  </div>
-               </Link>
-            </div>
-         ))}
+            <Link to={`/organizationdetails/${organization._id}`}>
+              <div className="text-center">
+                <div className="organaztion-img">
+                  <img
+                    src={organization.images[0].url}
+                    alt={organization.title}
+                    loading='lazy'
+                  />
+                </div>
+                {/* <h4>{organization.title}</h4> */}
+              </div>
+            </Link>
+          </div>
+        ))}
       </div>
+      </div>
+ 
     </>
   );
 }
