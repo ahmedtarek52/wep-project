@@ -5,9 +5,12 @@ import './Dontation.css'
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Donation() {
+  const notify = () => toast("Wow so easy!");
+
 let { brands , organizations} =useContext(DataContext);
 
 
@@ -28,6 +31,7 @@ let { brands , organizations} =useContext(DataContext);
   }, []);
   return (
     <>
+    
 <section>
 <div className="main-banner">
     <div className="title ">
@@ -66,7 +70,10 @@ let { brands , organizations} =useContext(DataContext);
           )}
         </div>
       </section>
-
+      <div>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer />
+      </div>
      
       <div className="container ">
          <div className="row g-3 align-items-center justify-content-center ">

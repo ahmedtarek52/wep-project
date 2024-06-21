@@ -290,7 +290,7 @@ async function sendDataToApi() {
             title="contact page"
           ></iframe>
         </div>
-      </section>
+      </section> 
     </>
   );
 }

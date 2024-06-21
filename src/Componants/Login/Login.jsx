@@ -7,6 +7,7 @@ import { API_URL } from '../../utils/api';
 import loginImg from "../images/login.png"
 import "./Login.css"
 
+ 
 
 export default function Login({saveUserData}) {
    const [errorList, seterrorList] = useState([]);
@@ -28,6 +29,7 @@ export default function Login({saveUserData}) {
     let { data } = await axios.post(`${API_URL}/Login`, user);
     if (data.success === true) {
       setisLoding(false);
+      alert("login is true")
       localStorage.setItem('token', data.token);
       saveUserData();
       navigate('/')

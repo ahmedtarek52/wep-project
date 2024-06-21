@@ -18,7 +18,7 @@ import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import DataContextProvide from './Context/Store';
-
+import Payment from './Componants/Payment/Payment';
 
 
 
@@ -55,6 +55,7 @@ function saveUserData(){
       // { path: 'organization', element: <Organization /> },
       { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
       { path: 'privateroute', element: <PrivateRoute /> },
+      { path: 'payment', element: <Payment/> },
   ]}
   
   ])
