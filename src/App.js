@@ -19,6 +19,8 @@ import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import DataContextProvide from './Context/Store';
 import Payment from './Componants/Payment/Payment';
+import AllForms from './Componants/AllForms/AllForms';
+import Spinner from './Componants/Spinner/Spinner';
 
 
 
@@ -56,6 +58,8 @@ function saveUserData(){
       { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
       { path: 'privateroute', element: <PrivateRoute /> },
       { path: 'payment', element: <Payment/> },
+      { path: 'allforms', element:<PrivateRoute userData={userData}><AllForms/> </PrivateRoute>},
+      { path: 'spinner', element: <Spinner/> },
   ]}
   
   ])

@@ -1,0 +1,10 @@
+#loding{
+  position: fixed;
+  inset: 0;
+  background-color: rgb(224, 224, 224);
+  display:flex ;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  z-index: 99999999;
+}

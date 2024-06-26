@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { API_URL } from "../../utils/api";
+import Spinner from '../Spinner/Spinner';
 
 export default function Profile() {
   const [profile, setProfile] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
   async function getprofileData() {
     const headers = {
@@ -16,15 +17,18 @@ export default function Profile() {
     try {
       const { data } = await axios.get(`${API_URL}/profile `, { headers });
       setProfile(data.data);
-      console.log(data.data);
+      // console.log(data.data);
     } catch (error) {
       console.log(error);
     }
+   finally {
+    setLoading(false);
+  }
   }
 
   useEffect(() => {
     getprofileData();
-  }, []);
+  }, );
 
   const [updateProfile, setupdateProfile] = useState({
     username: "",
@@ -64,7 +68,9 @@ export default function Profile() {
         <meta charSet="utf-8" />
         <title>Profile</title>
       </Helmet>
-
+      {loading ? (
+        <Spinner/>
+      ) : (
       <section className="bg-light py-3 py-md-5 py-xl-8">
         <div className="container">
           <div className="row justify-content-md-center">
@@ -385,6 +391,7 @@ export default function Profile() {
           </div>
         </div>
       </section>
+      )}
     </>
   );
 }

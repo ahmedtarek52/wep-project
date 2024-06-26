@@ -7,33 +7,47 @@ import { API_URL } from '../../utils/api';
 import process from "../images/process-img-1.png"
 import team from "../images/fact-img-1.webp"
 import YouTube from 'react-youtube';
+import Spinner from '../Spinner/Spinner';
 
 export default function OrganizationDetails() {
    let { id } = useParams();
    // console.log(id);
    const [organDetails, setOrganDetails] = useState({});
+   const [loading, setLoading] = useState(true);
 
    async function getOrganDetails() {
       try {
          const { data } = await axios.get(`${API_URL}/organizations/${id}`);
-         console.log(data);
+        //  console.log(data);
 
          setOrganDetails(data.data);
       } catch (error) {
          console.error(error);
-         // Handle the error, e.g., display an error message or set a default value for organDetails
+         
+      }
+      finally{
+        setLoading(false);
       }
    }
 
    useEffect(() => {
       getOrganDetails();
-   }, []);
+   }, );
 
 
    const videoId = 'y-tqxFjVrxA';
    return (
+
+
+    
       <>
- <div className="container py-5">
+{loading ? (
+        <Spinner/>
+      ) : (<div>
+
+
+
+<div className="container py-5">
             <h2 className='text-center'>Organisation Details</h2>
             <div className="row bg-light">
                <div className="col-md-6 ">
@@ -103,15 +117,10 @@ export default function OrganizationDetails() {
     </section>
 
 
-        
-
-
       <div className=' justify-content-center align-items-center d-flex' style={{ maxWidth: '100%' }}>
       <YouTube videoId={videoId} />
     </div>
-         
-
-
+      
 
 <section class="bg-light py-3 py-md-5">
   <div class="container">
@@ -168,6 +177,9 @@ export default function OrganizationDetails() {
     </div>
   </div>
 </section>
+
+
+</div>)}
       </>
    );
 }

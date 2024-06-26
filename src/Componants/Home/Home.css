@@ -26,6 +26,8 @@
   .custom-border {
     border-color: var(--orange-bg) !important;
   }
+
+
   .contactForm .label {
     color: #000;
     text-transform: uppercase;

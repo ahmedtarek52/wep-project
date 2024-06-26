@@ -1,4 +1,4 @@
-import React, { useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { Helmet } from 'react-helmet';
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
@@ -24,6 +24,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
 
 import "./Home.css";
+
 
 export default function Home() {
    let { brands } =useContext(DataContext);
@@ -63,14 +64,17 @@ export default function Home() {
    }, []);
 
 
+
+
    return (
       <>
 
-<Helmet>
+         <Helmet>
             <meta charSet="utf-8" />
             <title>Home</title>
          </Helmet>
-      {/* satart startPage*/}
+
+      {/* header*/}
          <section id="startPage">
             <div className="carousel vh-100 w-100  position-relative" ref={carouselRef}>
                <div className="list">
@@ -81,18 +85,21 @@ export default function Home() {
                         <h1 className="topic text-uppercase">save the childrens</h1>
                         <p className="des ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum</p>
                         <div className="buttons text-align-center d-flex ">
-                           <button className="text-uppercase text-light  ">
+                         <Link to={`/allforms`}><button className="text-uppercase text-light  ">
                               denote now{' '}
                               <span>
                                  <i className="fa-solid fa-heart"></i>
                               </span>
                            </button>
+                           </Link>  
+                           <Link to={`/contact`}>
                            <button className="text-uppercase bg-light ">
                               contact us{' '}
                               <span>
                                  <i className="fa-solid fa-circle-chevron-right"></i>
                               </span>
                            </button>
+                           </Link>
                         </div>
                      </div>
                   </div>
@@ -103,18 +110,22 @@ export default function Home() {
                         <h1 className="topic text-uppercase">make differance today</h1>
                         <p className="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque</p>
                         <div className="buttons text-align-center d-flex ">
+                           <Link to={`/allforms`}>
                            <button className="text-uppercase text-light ">
                               denote now{' '}
                               <span>
                                  <i className="fa-solid fa-heart"></i>
                               </span>
                            </button>
+                           </Link>
+                           <Link to={`/contact`}>
                            <button className="text-uppercase bg-light ">
                               contact us{' '}
                               <span>
                                  <i className="fa-solid fa-circle-chevron-right"></i>
                               </span>
                            </button>
+                           </Link>
                         </div>
                      </div>
                   </div>
@@ -130,7 +141,7 @@ export default function Home() {
             </div>
          </section>
 
-      {/* satart startUp*/}
+      {/* startUp*/}
          <section id="startUp">
             <div className="interface container pt-3 shadow-sm p-3 mb-5  rounded">
                <div className="row ">
@@ -180,7 +191,7 @@ export default function Home() {
             </div>
          </section>
 
-         {/* satart land */}
+         {/* land */}
          <section id="about  ">
             <div className="container py-5 ">
                <div className=" row  d-flex  ">
@@ -202,19 +213,18 @@ export default function Home() {
                         Helped Fund <span>78,743</span> Projects in <span>30</span> Countries, Benefiting Over <span>7.6</span> Million People.
                      </p>
                      <div className="buttons py-3">
-                        <button className="text-uppercase text-light  ">
-                           denote now{' '}
-                           <span>
-                              <i className="fa-solid fa-heart"></i>
-                           </span>
+                       <Link to={`/allforms`}>
+                       <button className="text-uppercase text-light  ">
+                            denote now <span> <i className="fa-solid fa-heart"></i> </span>
                         </button>
+                       </Link>
                      </div>
                   </div>
                </div>
             </div>
          </section>
 
-      {/* <!-- start causes--> */}
+      {/* causes */}
          <section id="causes">
             <div className="container bg-light  py-5">
                <div className="row justify-content-center pb-5 mb-3">
@@ -255,7 +265,7 @@ export default function Home() {
             </div>
          </section>
 
-         {/* <!-- start quote --> */}
+         {/* quote */}
          <section id="quote">
             <div className="quote my-5">
                <div className="container position-relative py-5">
@@ -265,7 +275,7 @@ export default function Home() {
             </div>
          </section>
          
-         {/* <!-- start activites --> */}
+         {/*  activites  */}
          <section id="activites">
             <div className=" activites container py-5 ">
                <div className=" orange-border border-start  border-4 fw-bolder py-2 ps-3">
@@ -308,12 +318,14 @@ export default function Home() {
                </div>
 
                <div className="buttons py-5  text-center">
+                  <Link to={`/about`}>
                   <button className="text-uppercase text-light  ">All Activies</button>
+                  </Link>
                </div>
             </div>
          </section>
 
-         {/* start our sponsors */}
+         {/*  our sponsors */}
          <section>
             <div className="container py-3 ">
                <div className="sponsers text-center">
@@ -335,7 +347,7 @@ export default function Home() {
             </div>
          </section>
 
-         {/* start testimoianl */}
+         {/*  testimoianl */}
          <section className="testimoianl  bg-light shadow-sm p-3 mb-5 rounded">
             <div className="text-center">
                <p className="orange-text m-0">Happy People</p>
@@ -383,7 +395,7 @@ export default function Home() {
             </div>
          </section>
 
-         {/* start team */}
+         {/* team */}
          <section className="py-3 py-md-5 py-xl-8">
             <div className="container">
                <div className="row ">
