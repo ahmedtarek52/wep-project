@@ -7,6 +7,8 @@ import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from '../Ui/Button';
+
 
 export default function Donation() {
   const notify = () => toast("Wow so easy!");
@@ -103,6 +105,9 @@ let { brands , organizations} =useContext(DataContext);
             </div>
          ))}
       </div>
+
+
+      <Button to='/about' >About Us</Button>
 </>
   )
 }

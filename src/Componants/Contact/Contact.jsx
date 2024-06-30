@@ -98,8 +98,8 @@ async function sendDataToApi() {
                   <div className="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch p-0 ">
                     <div className="contact-wrap w-100 p-md-5 p-4">
                       <h3 className="mb-4">Get in touch</h3>
-                      <div id="form-message-warning" className="mb-4"></div>
-                      {/* <div id="form-message-success" className="mb-4">
+                      {/* <div id="form-message-warning" className="mb-4"></div>
+                      <div id="form-message-success" className="mb-4 text-danger">
                                         Your message was sent, thank you!
                                         </div> */}
 

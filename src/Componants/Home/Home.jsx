@@ -85,7 +85,8 @@ export default function Home() {
                         <h1 className="topic text-uppercase">save the childrens</h1>
                         <p className="des ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum</p>
                         <div className="buttons text-align-center d-flex ">
-                         <Link to={`/allforms`}><button className="text-uppercase text-light  ">
+                         <Link to={`/allforms`}>
+                         <button className="text-uppercase text-light  ">
                               denote now{' '}
                               <span>
                                  <i className="fa-solid fa-heart"></i>
@@ -206,8 +207,7 @@ export default function Home() {
                      <h2 className="topic">2021 Fundraiser Campaigns For Social Justice</h2>
                      <img src={land3} alt="" />
                      <p className="text-muted py-3">
-                        There are many variations of passages of orem Ipsum available, but the majority have suffered alteration in some form, by cted ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do usmod temponcid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi.
+                     There are many ways to empower underprivileged kids, but the majority have lacked access to quality education, by fostering opportunities benevolence dolor sit amet, consectetur humanitarian elit, spreading joy and harmony universally. Practicing compassion and generosity, we strive to make a positive impact globally.
                      </p>
                      <p className="orange-border border-start  border-4 fw-bolder py-2 ps-3">
                         Helped Fund <span>78,743</span> Projects in <span>30</span> Countries, Benefiting Over <span>7.6</span> Million People.

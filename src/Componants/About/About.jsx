@@ -134,8 +134,9 @@ export default function About() {
 
       <div > 
         <div className='container'>
-        <p>
-          We are proud to announce our collaboration with those charities, a
+        <p className=' text-light-emphasis fs-5 text-center'>
+          <h1>Our supporting associations</h1>
+          <span className=' fw-semibold'>We are proud to announce our collaboration with those charities</span>, a
           dedicated organizations those shares our vision for a better future.
           Through this partnership, we aim to amplify our efforts and bring
           about meaningful change. Together, we are committed to making a

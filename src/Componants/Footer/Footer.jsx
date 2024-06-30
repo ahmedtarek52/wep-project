@@ -3,7 +3,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 export default function Footer() {
    return (
-      <footer className="text-center text-lg-start text-white" style={{ backgroundColor: '#1c2331' }}>
+      <footer className="text-center text-lg-start text-white" style={{ backgroundColor: '#00152E' }}>
       {/* Section: Social media */}
       <section className="d-flex justify-content-between p-4" style={{ backgroundColor: '#6351ce' }}>
         {/* Left */}

@@ -21,6 +21,7 @@ import DataContextProvide from './Context/Store';
 import Payment from './Componants/Payment/Payment';
 import AllForms from './Componants/AllForms/AllForms';
 import Spinner from './Componants/Spinner/Spinner';
+import Error from './Componants/Error/Error';
 
 
 
@@ -43,7 +44,7 @@ function saveUserData(){
 
 
   let routers = createBrowserRouter ([
-    { path: '/', element: <Layout userData={userData} setuserData={setuserData} />, children: [
+    { path: '/', element: <Layout userData={userData} setuserData={setuserData} />,errorElement:<Error/>, children: [
       { path: '', element: <Home /> },
       { path: 'login', element: <Login saveUserData={saveUserData} /> },
       { path: 'register', element: <Register /> },
@@ -53,13 +54,24 @@ function saveUserData(){
       { path: 'donation', element: <Donation /> },
       { path: 'donationform', element: <PrivateRoute userData={userData}><DonationForm /></PrivateRoute>},
       // { path: 'brands', element: <Brands /> },
-      { path: 'branddetails/:id', element: <BrandDetails /> },
+      { path: 'branddetails/:id', element: <BrandDetails />, 
+        // loader:({params}) =>{
+        //   if(params.id){
+        //     throw new Response("Bad Request" ,{
+        //       statusText:"category not found",
+        //       status:400,
+        //     });
+        //   }
+        //   return true;
+        // }
+      },
       // { path: 'organization', element: <Organization /> },
       { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
       { path: 'privateroute', element: <PrivateRoute /> },
       { path: 'payment', element: <Payment/> },
       { path: 'allforms', element:<PrivateRoute userData={userData}><AllForms/> </PrivateRoute>},
       { path: 'spinner', element: <Spinner/> },
+      
   ]}
   
   ])

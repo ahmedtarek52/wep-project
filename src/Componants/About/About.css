@@ -15,7 +15,7 @@ left: 0;
 top: 0;
 width: 100%;
 height: 300px;
-background-color: rgba(0, 21, 47, 0.75);
+background-color: hwb(213 0% 82% / 0.749);
 }
 .hello{
     color: white;
@@ -36,15 +36,6 @@ background-color: rgba(0, 21, 47, 0.75);
     margin: 90px auto 0;
 }
 
-/* .news-detail-header-section {
-    background-image: url('../images/home1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    padding-top: 150px;
-    padding-bottom: 150px;
-  } */
 
   .help-today{
     position: relative;
