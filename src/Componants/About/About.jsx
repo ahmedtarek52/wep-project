@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet';
 import './About.css'
 import helthicon from '../images/charity.png'
 import arrow from '../images/arrows.png'
@@ -32,6 +33,11 @@ export default function About() {
  }, []);
   return (
     <>
+        <Helmet>
+            <meta charSet="utf-8" />
+            <title>About</title>
+         </Helmet>
+
       <div className="main-banner">
         <div className="title ">
           <h1>about us</h1>

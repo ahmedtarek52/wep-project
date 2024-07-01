@@ -54,17 +54,7 @@ function saveUserData(){
       { path: 'donation', element: <Donation /> },
       { path: 'donationform', element: <PrivateRoute userData={userData}><DonationForm /></PrivateRoute>},
       // { path: 'brands', element: <Brands /> },
-      { path: 'branddetails/:id', element: <BrandDetails />, 
-        // loader:({params}) =>{
-        //   if(params.id){
-        //     throw new Response("Bad Request" ,{
-        //       statusText:"category not found",
-        //       status:400,
-        //     });
-        //   }
-        //   return true;
-        // }
-      },
+      { path: 'branddetails/:id', element: <BrandDetails />, },
       // { path: 'organization', element: <Organization /> },
       { path: 'organizationdetails/:id', element: <OrganizationDetails /> },
       { path: 'privateroute', element: <PrivateRoute /> },

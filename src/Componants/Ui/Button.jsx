@@ -5,13 +5,15 @@ const Button = ({
   children,
   className,
   to, 
+  devStyle,
+  color ='text-light',
   ...rest
 }) => {
   return (
-    <div className="buttons py-5  text-center">
+    <div className={`buttons ${devStyle}`}>
     <Link to={to}> 
       <button
-        className={`${className} text-uppercase text-light `}
+        className={`${className} text-uppercase ${color} `}
         {...rest}>
         {children}
       </button>

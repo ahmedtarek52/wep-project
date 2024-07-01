@@ -24,6 +24,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
 
 import "./Home.css";
+import Button from "../Ui/Button";
 
 
 export default function Home() {
@@ -63,12 +64,8 @@ export default function Home() {
       };
    }, []);
 
-
-
-
    return (
       <>
-
          <Helmet>
             <meta charSet="utf-8" />
             <title>Home</title>
@@ -83,24 +80,10 @@ export default function Home() {
                      <div className="content col-md-6  position-absolute text-light">
                         <p className="author">we help you</p>
                         <h1 className="topic text-uppercase">save the childrens</h1>
-                        <p className="des ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum</p>
-                        <div className="buttons text-align-center d-flex ">
-                         <Link to={`/allforms`}>
-                         <button className="text-uppercase text-light  ">
-                              denote now{' '}
-                              <span>
-                                 <i className="fa-solid fa-heart"></i>
-                              </span>
-                           </button>
-                           </Link>  
-                           <Link to={`/contact`}>
-                           <button className="text-uppercase bg-light ">
-                              contact us{' '}
-                              <span>
-                                 <i className="fa-solid fa-circle-chevron-right"></i>
-                              </span>
-                           </button>
-                           </Link>
+                        <p className="des ">Helping one person might not change the world, but it could change the world for one person.</p>
+                        <div className="text-align-center d-flex buttons">
+                           <Button to='/allforms' >denote now{' '}<span><i className="fa-solid fa-heart"></i> </span></Button>
+                           <Button to='/allforms' className='bg-light' color='txt-orange-style'>denote now{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
                         </div>
                      </div>
                   </div>
@@ -109,24 +92,10 @@ export default function Home() {
                      <div className="content col-md-6 position-absolute text-light ">
                         <p className="author">we help you</p>
                         <h1 className="topic text-uppercase">make differance today</h1>
-                        <p className="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque</p>
-                        <div className="buttons text-align-center d-flex ">
-                           <Link to={`/allforms`}>
-                           <button className="text-uppercase text-light ">
-                              denote now{' '}
-                              <span>
-                                 <i className="fa-solid fa-heart"></i>
-                              </span>
-                           </button>
-                           </Link>
-                           <Link to={`/contact`}>
-                           <button className="text-uppercase bg-light ">
-                              contact us{' '}
-                              <span>
-                                 <i className="fa-solid fa-circle-chevron-right"></i>
-                              </span>
-                           </button>
-                           </Link>
+                        <p className="des">In a world where you can be anything, be kind. Your kindness can change someone's day, or even their life.</p>
+                        <div className="text-align-center d-flex buttons">
+                           <Button to='/allforms' >denote now{' '}<span><i className="fa-solid fa-heart"></i> </span></Button>
+                           <Button to='/allforms' className='bg-light' color='txt-orange-style'>denote now{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
                         </div>
                      </div>
                   </div>
@@ -212,19 +181,13 @@ export default function Home() {
                      <p className="orange-border border-start  border-4 fw-bolder py-2 ps-3">
                         Helped Fund <span>78,743</span> Projects in <span>30</span> Countries, Benefiting Over <span>7.6</span> Million People.
                      </p>
-                     <div className="buttons py-3">
-                       <Link to={`/allforms`}>
-                       <button className="text-uppercase text-light  ">
-                            denote now <span> <i className="fa-solid fa-heart"></i> </span>
-                        </button>
-                       </Link>
-                     </div>
+                     <Button to='/allforms' devStyle='py-3'>denote now <span> <i className="fa-solid fa-heart"></i> </span></Button>
                   </div>
                </div>
             </div>
          </section>
 
-      {/* causes */}
+         {/* causes */}
          <section id="causes">
             <div className="container bg-light  py-5">
                <div className="row justify-content-center pb-5 mb-3">
@@ -287,46 +250,49 @@ export default function Home() {
                   <div className="col-lg-4 col-md-6">
                      <div className=" image-container " >
                         <img className="w-100 img-fluid" src={activ1} alt="active" loading="lazy"/>
-                        <p className="layer">Lorem, ipsum dolor.</p>
+                        <p className="layer">Hope in Darkness</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
                         <img className="w-100 img-fluid" src={activ2} alt="active" loading="lazy" />
+                        <p className="layer">Kindness Feeds Souls</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
                         <img className="w-100 img-fluid" src={activ3} alt="active" loading="lazy"/>
+                        <p className="layer">Charity Heals Pain</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
                         <img className="w-100 img-fluid" src={activ4} alt="active" loading="lazy"/>
+                        <p className="layer">Giving Brings Joy</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
                         <img className="w-100 img-fluid" src={activ5} alt="active" loading="lazy"/>
+                        <p className="layer">Love Conquers Poverty</p>
                      </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                      <div className="image-container">
                         <img className="w-100 img-fluid" src={activ6} alt="active" loading="lazy"/>
+                        <p className="layer">Compassion Saves Lives</p>
                      </div>
                   </div>
                </div>
 
-               <div className="buttons py-5  text-center">
-                  <Link to={`/about`}>
-                  <button className="text-uppercase text-light  ">All Activies</button>
-                  </Link>
-               </div>
+               
+                  <Button to='/about' devStyle='text-center py-3'>All Activies</Button>
+               
             </div>
          </section>
 
          {/*  our sponsors */}
-         <section>
+         <section id="our sponsors">
             <div className="container py-3 ">
                <div className="sponsers text-center">
                   <span className="orange-text">Sponsors</span>
@@ -348,7 +314,7 @@ export default function Home() {
          </section>
 
          {/*  testimoianl */}
-         <section className="testimoianl  bg-light shadow-sm p-3 mb-5 rounded">
+         <section id="testimoianl" className="testimoianl  bg-light shadow-sm p-3 mb-5 rounded">
             <div className="text-center">
                <p className="orange-text m-0">Happy People</p>
                <h2 className="m-0">What People Say About Us</h2>
@@ -357,7 +323,7 @@ export default function Home() {
             <div id="carouselExampleIndicators" className="carousel   text-center slide w-75 mx-auto py-5">
                <div className="carousel-inner ">
                   <div className="carousel-item  active">
-                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy"/>
+                     <img className="clint-img shadow" src={voltanir1} alt="active" loading="lazy"/>
                      <div className="clint  p-5">
                         <h5 className="fw-bolder">ahmed tarek</h5>
                         <h6 className="text-muted">programmer</h6>
@@ -365,38 +331,38 @@ export default function Home() {
                      </div>
                   </div>
                   <div className="carousel-item">
-                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy"/>
+                     <img className="clint-img shadow" src={voltanir2} alt="active" loading="lazy"/>
                      <div className="clint p-5">
-                        <h5 className="fw-bolder">ahmed tarek</h5>
-                        <h6 className="text-muted">programmer</h6>
+                        <h5 className="fw-bolder">mahmoud shalaby</h5>
+                        <h6 className="text-muted">developer</h6>
                         <p className="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
                      </div>
                   </div>
                   <div className="carousel-item">
-                     <img className="clint-img shadow" src={activ1} alt="active" loading="lazy" />
+                     <img className="clint-img shadow" src={voltanir3} alt="active" loading="lazy" />
                      <div className="clint p-5">
-                        <h5 className="fw-bolder">ahmed tarek</h5>
-                        <h6 className="text-muted">programmer</h6>
+                        <h5 className="fw-bolder">hossam ramdan</h5>
+                        <h6 className="text-muted">designer</h6>
                         <p className="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
                      </div>
                   </div>
                </div>
                <div className="carousel-indicators position-static m-3 ">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1">
-                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
+                     <img className="w-100 rounded-circle" src={voltanir1} alt="active" loading="lazy"/>
                   </button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
+                     <img className="w-100 rounded-circle" src={voltanir2} alt="active" loading="lazy"/>
                   </button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                     <img className="w-100 rounded-circle" src={activ1} alt="active" loading="lazy"/>
+                     <img className="w-100 rounded-circle" src={voltanir3} alt="active" loading="lazy"/>
                   </button>
                </div>
             </div>
          </section>
 
          {/* team */}
-         <section className="py-3 py-md-5 py-xl-8">
+         <section id="team " className="py-3 py-md-5 py-xl-8">
             <div className="container">
                <div className="row ">
                   <div className="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 ">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import nophoto from "../images/no-photo-large-m.png";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { API_URL } from "../../utils/api";
@@ -8,57 +7,60 @@ import Spinner from '../Spinner/Spinner';
 export default function Profile() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const token = localStorage.getItem("token");
+
   async function getprofileData() {
     const headers = {
       authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     };
     try {
-      const { data } = await axios.get(`${API_URL}/profile `, { headers });
+      const { data } = await axios.get(`${API_URL}/profile`, { headers });
       setProfile(data.data);
-      // console.log(data.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
-   finally {
-    setLoading(false);
   }
-}
 
   useEffect(() => {
     getprofileData();
-  }, );
+  }, []);
 
-  const [updateProfile, setupdateProfile] = useState({
+  // Profile update
+  const [updateProfile, setUpdateProfile] = useState({
     username: "",
     phone: "",
   });
- 
 
   function getUpdatedData(eventInfo) {
     let profileData = { ...updateProfile };
     profileData[eventInfo.target.name] = eventInfo.target.value;
-    setupdateProfile(profileData);
-    // console.log(profileData);
+    setUpdateProfile(profileData);
   }
-
-
 
   async function sendProfileDataToApi() {
     const headers = {
       authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     };
-    let { data } = await axios.put(`${API_URL}/profile/update`, updateProfile, {
-      headers,
-    });
-    if (data.success === true) {
-      console.log(data.data);
-      alert("Profile has been updated successfully");
-    } else {
-      console.log("nodata");
-      console.error();
+    try {
+      let { data } = await axios.put(`${API_URL}/profile/update`, updateProfile, { headers });
+      if (data.success === true) {
+        setUpdateProfile({
+          username: "",
+          phone: "",
+        });
+        setError('');
+      } else {
+        console.log("No data");
+        setError(data.message);
+      }
+    } catch (err) {
+      setError(err.response ? err.response.data.message : 'An error occurred. Please try again.');
     }
   }
 
@@ -67,17 +69,44 @@ export default function Profile() {
     sendProfileDataToApi();
   }
 
-  const [updatePassword, setupdatePassword] = useState({
-    currentpassword:"",
-    newpassword: "",
-    confirmpassword: "",
+  // Password update
+  const [updatePassword, setUpdatePassword] = useState({
+    password: "",
+    confirmPassword: "",
   });
-  
+
   function getPasswordData(eventInfo) {
     let passwordData = { ...updatePassword };
     passwordData[eventInfo.target.name] = eventInfo.target.value;
-    setupdatePassword(passwordData);
-    console.log(passwordData);
+    setUpdatePassword(passwordData);
+  }
+
+  async function updatePasswordDataToApi() {
+    const headers = {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+    try {
+      let { data } = await axios.put(`${API_URL}/profile/update`, updatePassword, { headers });
+      if (data.success) {
+        console.log(data);
+        setUpdatePassword({
+          password: "",
+          confirmPassword: "",
+        });
+        setPasswordError('');
+      } else {
+        console.log(data);
+        setPasswordError(data.message);
+      }
+    } catch (error) {
+      setPasswordError(error.response ? error.response.data.message : 'An error occurred. Please try again.');
+    }
+  }
+
+  function submitPasswordForm(e) {
+    e.preventDefault();
+    updatePasswordDataToApi();
   }
 
   return (
@@ -202,6 +231,8 @@ export default function Profile() {
 
                       {/* Profile */}
                       <div className="tab-pane fade" id="profile-tab-pane"  role="tabpanel"  aria-labelledby="profile-tab"  tabIndex="0">
+                      {error && <div className="alert alert-danger">{error}</div>}
+
                         <form
                           onSubmit={submitProfileForm}
                           action="#!"
@@ -220,7 +251,7 @@ export default function Profile() {
                                 />
                               </div>
                               <div className="col-12">
-                                <a href="#!" className="d-inline-block custom-bg link-light lh-1 p-2 rounded">
+                                <a href="#!" className="d-inline-block orange link-light lh-1 p-2 rounded">
                                   <i className="fa-solid fa-pen-to-square"></i>{" "}
                                 </a>
                               </div>
@@ -228,17 +259,17 @@ export default function Profile() {
                           </div>
                           <div className="col-12 col-md-6">
                             <label htmlFor="inputFirstName" className="form-label" >username</label>
-                            <input onChange={getUpdatedData}
+                            <input onChange={getUpdatedData}  value={updateProfile.username}
                               type="text" name="username" className="form-control"  id="inputFirstName"/>
                           </div>
                           <div className="col-12 col-md-6">
                             <label htmlFor="inputPhone" className="form-label"> Phone </label>
-                            <input onChange={getUpdatedData}
+                            <input onChange={getUpdatedData} value={updateProfile.phone}
                               type="tel" name="phone" className="form-control"  id="inputPhone"
                             />
                           </div>
                           <div className="col-12">
-                            <button type="submit" className="btn custom-bg text-light">
+                            <button type="submit" className="btn orange text-light">
                               update
                             </button>
                           </div>
@@ -288,29 +319,26 @@ export default function Profile() {
 
                       {/* Password */}
                       <div className="tab-pane fade"  id="password-tab-pane"  role="tabpanel"  aria-labelledby="password-tab"  tabIndex="0">
+                      {passwordError && <div className="alert alert-danger">{passwordError}</div>}
                         <form action="#!"
-                        // onSubmit={submitPasswordForm}
+                        onSubmit={submitPasswordForm}
                         >
                           <div className="row gy-3 gy-xxl-4">
                             <div className="col-12">
-                              <label  htmlFor="currentPassword"  className="form-label">
-                                Current Password
-                              </label>
-                              <input onChange={getPasswordData} type="password"  className="form-control"  id="currentPassword"  name="currentpassword"/>
-                            </div>
-                            <div className="col-12">
                               <label  htmlFor="newPassword"  className="form-label"  >
                                 {" "}
-                                New Password
+                                 Password
                               </label>
-                              <input onChange={getPasswordData}  type="password"   className="form-control"  id="newPassword" name="newpassword" />
+                              <input onChange={getPasswordData}  type="password"   className="form-control"
+                                id="newPassword" name="password" value={updatePassword.password} />
                             </div>
                             <div className="col-12">
                               <label  htmlFor="confirmPassword"    className="form-label"  >
                                 {" "}
                                 Confirm Password{" "}
                               </label>
-                              <input onChange={getPasswordData}  type="password"    className="form-control"  id="confirmPassword" name="confirmpassword"/>
+                              <input onChange={getPasswordData}  type="password"    className="form-control" 
+                               id="confirmPassword" name="confirmPassword"  value={updatePassword.confirmPassword} />
                             </div>
                             <div className="col-12">
                               <button type="submit" className="btn orange text-light">
