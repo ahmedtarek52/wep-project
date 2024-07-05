@@ -65,9 +65,12 @@ img {
   .custom-bg {
     background-color: var(--dark-bg) !important;
   }
+  .custom-color {
+   color: var(--dark-bg) !important;
+  }
   
   .custom-border {
-    border-color: var(--orange-bg) !important;
+    border-color: var(--dark-bg) !important;
   }
 
 
@@ -109,9 +112,27 @@ img {
 .nav-link , .dropdown-item {
   color:var(--dark-bg) !important;
 }
+
+
+.nav-link.active{
+  position: relative;
+}
+.nav-link.active::after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  left: 15px;
+  bottom: 0;
+  background-color: var(--orange-bg);
+  transition: .3s;
+}
+.nav-link.active:hover:after{
+  width: 65%;
+}
 /* Profile */
 .widget-card .nav-link.active, .dropdown-item.active {
-  color: #f74f22 !important;
+  color: var(--orange-bg) !important;
 }
 
 /* login , register > png style  */

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import Joi from 'joi';
 import { API_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
@@ -21,6 +22,7 @@ export default function DonationForm() {
   });
   const [selectedOrganization, setSelectedOrganization] = useState(null);
   const [selectedOrganizationTitle, setSelectedOrganizationTitle] = useState("");
+  const [successMessage, setSuccessMessage] = useState('');
 
   async function sendDataToApi() {
     const formData = new FormData();
@@ -38,6 +40,15 @@ export default function DonationForm() {
 
       if (data.success) {
         setIsLoading(false);
+        setSuccessMessage('Your Donation was sent successfully!');
+        setMainForm({
+          itemsName: " ",
+          location: " ",
+          charity: " ",
+          quantity: 0,
+          phone: " ",
+          image: null,
+        });
         console.log(data);
       } else {
         setIsLoading(false);
@@ -87,6 +98,10 @@ export default function DonationForm() {
 
   return (
     <>
+     <Helmet>
+        <meta charSet="utf-8" />
+        <title>Donation Form</title>
+      </Helmet>
       <section>
         <div className="main-banner">
           <div className="title">
@@ -102,6 +117,7 @@ export default function DonationForm() {
 
       <section>
         <div className="container">
+        
           <div className="row g-3 align-items-center">
             {organizations.map((organization) => (
               <div className="col-md-4" key={organization._id}>
@@ -131,16 +147,16 @@ export default function DonationForm() {
           ))}
 
           {error && <div className="alert alert-danger my-2">{error}</div>}
-
+          {successMessage && <div className="alert alert-success my-2">{successMessage}</div>}
           <form onSubmit={submitData}>
             <div className="row mb-3">
               <div className="col-md-6">
                 <label htmlFor="itemsName1" className="form-label">Items Name</label>
-                <input onChange={getUserData} type="text" className="form-control" name="itemsName" id="itemsName1" />
+                <input onChange={getUserData} value={mainForm.itemsName} type="text" className="form-control" name="itemsName" id="itemsName1" />
               </div>
               <div className="col-md-6">
                 <label htmlFor="location1" className="form-label">Location</label>
-                <input onChange={getUserData} type="text" className="form-control" name="location" id="location1" />
+                <input onChange={getUserData} value={mainForm.location} type="text" className="form-control" name="location" id="location1" />
               </div>
             </div>
             <div className="row mb-3">
@@ -157,13 +173,13 @@ export default function DonationForm() {
               </div>
               <div className="col-md-6">
                 <label htmlFor="quantity1" className="form-label">Quantity</label>
-                <input onChange={getUserData} type="number" className="form-control" name="quantity" id="quantity1" />
+                <input onChange={getUserData} value={mainForm.quantity} type="number" className="form-control" name="quantity" id="quantity1" />
               </div>
             </div>
             <div className="row mb-3">
               <div className="col-md-6">
                 <label htmlFor="phone1" className="form-label">Phone</label>
-                <input onChange={getUserData} type="text" className="form-control" name="phone" id="phone1" />
+                <input onChange={getUserData} value={mainForm.phone} type="text" className="form-control" name="phone" id="phone1" />
               </div>
               <div className="col-md-6">
                 <label htmlFor="image" className="form-label">Image</label>

@@ -1,6 +1,7 @@
 // Payment.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import { API_URL } from '../../utils/api';
 import Spinner from '../Spinner/Spinner';
 
@@ -26,6 +27,10 @@ export default function Payment() {
 
   return (
     <> 
+     <Helmet>
+        <meta charSet="utf-8" />
+        <title>Payment</title>
+      </Helmet>
       {loading ? (
         <Spinner/>
       ) : (

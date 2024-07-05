@@ -9,6 +9,8 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(1);
   const token = localStorage.getItem("token");
 
   async function getprofileData() {
@@ -108,6 +110,18 @@ export default function Profile() {
     e.preventDefault();
     updatePasswordDataToApi();
   }
+
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentOrders = profile.orders?.slice(indexOfFirstItem, indexOfLastItem) || [];
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const totalPages = Math.ceil((profile.orders?.length || 0) / itemsPerPage);
+
 
   return (
     <>
@@ -236,19 +250,15 @@ export default function Profile() {
                         <form
                           onSubmit={submitProfileForm}
                           action="#!"
-                          className="row gy-3 gy-xxl-4"
-                        >
+                          className="row gy-3 gy-xxl-4">
                           <div className="col-12">
                             <div className="row gy-2">
-                              <label className="col-12 form-label m-0">
-                                Profile Image
-                              </label>
+                              <label className="col-12 form-label m-0"> Profile Image </label>
                               <div className="col-3">
                                 <img
                                   src={profile.profilephoto?.url}
                                   className="img-fluid w-100"
-                                  alt="Luna John"
-                                />
+                                  alt="profileimg"  />
                               </div>
                               <div className="col-12">
                                 <a href="#!" className="d-inline-block orange link-light lh-1 p-2 rounded">
@@ -260,13 +270,12 @@ export default function Profile() {
                           <div className="col-12 col-md-6">
                             <label htmlFor="inputFirstName" className="form-label" >username</label>
                             <input onChange={getUpdatedData}  value={updateProfile.username}
-                              type="text" name="username" className="form-control"  id="inputFirstName"/>
+                              type="text" name="username" className="form-control"  id="inputFirstName" placeholder="username"/>
                           </div>
                           <div className="col-12 col-md-6">
                             <label htmlFor="inputPhone" className="form-label"> Phone </label>
                             <input onChange={getUpdatedData} value={updateProfile.phone}
-                              type="tel" name="phone" className="form-control"  id="inputPhone"
-                            />
+                              type="tel" name="phone" className="form-control"  id="inputPhone" placeholder="Phone" />
                           </div>
                           <div className="col-12">
                             <button type="submit" className="btn orange text-light">
@@ -286,35 +295,54 @@ export default function Profile() {
                       </div>
 
                       {/* Donation orders */}
-                      <div className="tab-pane fade"  id="email-tab-pane"  role="tabpanel"  aria-labelledby="email-tab"  tabIndex="0">
+                      <div className="tab-pane fade" id="email-tab-pane" role="tabpanel" aria-labelledby="email-tab" tabIndex="0">
                         <form action="#!">
                           <ul>
-                            {profile.orders?.map((order) => (
-                              <li key={order._id} className="order-item">
-                                <h3 className="">
-                                  Item: 
-                                 <span className="text-danger ">{order.itemsName}</span> 
+                            {currentOrders.length > 0 ? (
+                              currentOrders.map((order) => (
+                                <li key={order._id} className="order-item">
+                                  <h3>
+                                  <span className="fw-semibold fs-5"> Item: </span>
+                                    <span className="fs-5 text-primary">{order.itemsName}</span>
                                   </h3>
-                                <p>
-                                  <span className=" fw-semibold fs-5">  Location:{" "} </span>
-                                  <span className="fs-5 text-primary">{order.location} </span>
-                                </p>
-                                <p>
-                                  <span className=" fw-semibold fs-5"> Charity:{" "}  </span>
-                                  <span className="fs-5 text-primary">  {order.charity.title}  </span>
-                                </p>
-                                <p>
-                                  <span className=" fw-semibold fs-5"> Quantity:{" "}  </span>
-                                  <span className="fs-5 text-primary">  {order.quantity}  </span>
-                                </p>
-                                <p>
-                                  <span className=" fw-semibold fs-5"> Status:{" "}  </span>
-                                  <span className="fs-5 text-primary">  {order.status}  </span>
-                                </p>     
-                              </li>
-                            )) || <li>No orders available</li>}
+                                  <p>
+                                    <span className="fw-semibold fs-5">Location: </span>
+                                    <span className="fs-5 text-primary">{order.location}</span>
+                                  </p>
+                                  <p>
+                                    <span className="fw-semibold fs-5">Charity: </span>
+                                    <span className="fs-5 text-primary">{order.charity.title}</span>
+                                  </p>
+                                  <p>
+                                    <span className="fw-semibold fs-5">Quantity: </span>
+                                    <span className="fs-5 text-primary">{order.quantity}</span>
+                                  </p>
+                                  <p>
+                                    <span className="fw-semibold fs-5">Status: </span>
+                                    <span className="fs-5 text-primary">{order.status}</span>
+                                  </p>
+                                  <div style={{height: 300}}>
+                                    <img  className="w-100 h-100" src={order.image.url} alt="donationimg" loading="lazy"/>
+                                  </div>
+                                </li>
+                              ))
+                            ) : (
+                              <li>No orders available</li>
+                            )}
                           </ul>
                         </form>
+                        {/* Pagination Controls */}
+                        <nav>
+                          <ul className="pagination">
+                            {[...Array(totalPages).keys()].map((page) => (
+                              <li key={page + 1} className={`page-item ${currentPage === page + 1 ? "active" : ""}`}>
+                                <button className="page-link" onClick={() => handlePageChange(page + 1)}>
+                                  {page + 1}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </nav>
                       </div>
 
                       {/* Password */}
@@ -330,7 +358,7 @@ export default function Profile() {
                                  Password
                               </label>
                               <input onChange={getPasswordData}  type="password"   className="form-control"
-                                id="newPassword" name="password" value={updatePassword.password} />
+                                id="newPassword" name="password" value={updatePassword.password} placeholder="password" />
                             </div>
                             <div className="col-12">
                               <label  htmlFor="confirmPassword"    className="form-label"  >
@@ -338,7 +366,7 @@ export default function Profile() {
                                 Confirm Password{" "}
                               </label>
                               <input onChange={getPasswordData}  type="password"    className="form-control" 
-                               id="confirmPassword" name="confirmPassword"  value={updatePassword.confirmPassword} />
+                               id="confirmPassword" name="confirmPassword"  value={updatePassword.confirmPassword} placeholder="confirmPassword" />
                             </div>
                             <div className="col-12">
                               <button type="submit" className="btn orange text-light">

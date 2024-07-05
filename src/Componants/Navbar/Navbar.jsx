@@ -20,30 +20,28 @@ export default function Navbar({logOut ,userData}) {
             <Link className="nav-link p-2 p-lg-3 active" aria-current="page" href="#">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" to = {"/about"} >About</Link>
+            <Link className="nav-link p-2 p-lg-3 active" to = {"/about"} >About</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" to={"/contact"}>contact</Link>
+            <Link className="nav-link p-2 p-lg-3 active" to={"/contact"}>Contact</Link>
           </li>
 
           <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle p-2 p-lg-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            donation details
+          <Link className="nav-link dropdown-toggle p-2 p-lg-3 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Donation Details
           </Link>
           <ul className="dropdown-menu">
-          <li><Link className="dropdown-item" to={"/allforms"}>donation forms</Link></li>
-            <li><Link className="dropdown-item" to={"/donation"}>donation</Link></li>
-            {/* <li><Link className="dropdown-item" to={"/brands"}>brands</Link></li>
-            <li><Link className="dropdown-item" to={"/organization"}>organization</Link></li> */}
+          <li><Link className="dropdown-item " to={"/allforms"}>Donation Forms</Link></li>
+            <li><Link className="dropdown-item" to={"/donation"}>How We Work</Link></li> 
           </ul>
         </li>
         <li className="nav-item">
-            <Link className="nav-link p-2 p-lg-3" to = {"/profile"} >profile</Link>
+            <Link className="nav-link p-2 p-lg-3 active" to = {"/profile"} >Profile</Link>
           </li>
           
           {userData?
           <li className="nav-item" onClick={logOut}>
-            <Link className="nav-link p-2 p-lg-3"  >logout</Link>
+            <Link className="nav-link p-2 p-lg-3 active"  >Logout</Link>
           </li>
           :<li className="nav-item">
           <Link className="nav-link p-2 p-lg-3" to = {"/login"} >Login</Link>

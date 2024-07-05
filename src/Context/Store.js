@@ -21,6 +21,7 @@ function DataContextProvide(props)
     useEffect(() => {
         getAllData('brands',setBrands);
         getAllData('organizations',setOrganizations);
+        getAllData('organizations',setOrganizations);
     }, []);
     return <DataContext.Provider value={{brands , organizations }}>
         {props.children}

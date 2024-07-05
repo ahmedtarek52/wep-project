@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-
+import { Helmet } from "react-helmet";
 import { API_URL } from '../../utils/api';
 import about1 from "../images/about-img-1.jpg"
 import blog1 from "../images/blog-image-1.jpg"
@@ -27,6 +27,10 @@ const [allDetails , setAllDetails] = useState ({})
       }, []);
   return (
     <>
+     <Helmet>
+        <meta charSet="utf-8" />
+        <title>Brands</title>
+      </Helmet>
     
     <div>
       {allDetails.image ? (

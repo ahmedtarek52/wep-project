@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import { useParams } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { API_URL } from '../../utils/api';
 import process from "../images/process-img-1.png"
 import team from "../images/fact-img-1.webp"
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
 import Spinner from '../Spinner/Spinner';
 
 export default function OrganizationDetails() {
@@ -31,8 +32,9 @@ export default function OrganizationDetails() {
    }
 
    useEffect(() => {
-      getOrganDetails();
-   }, );
+    getOrganDetails();
+ }, [id]);
+ 
 
 
    const videoId = 'y-tqxFjVrxA';
@@ -45,7 +47,10 @@ export default function OrganizationDetails() {
         <Spinner/>
       ) : (<div>
 
-
+<Helmet>
+        <meta charSet="utf-8" />
+        <title>Organization</title>
+      </Helmet>
 
 <div className="container py-5">
             <h2 className='text-center'>Organisation Details</h2>
@@ -117,56 +122,65 @@ export default function OrganizationDetails() {
     </section>
 
 
-      <div className=' justify-content-center align-items-center d-flex' style={{ maxWidth: '100%' }}>
-      <YouTube videoId={videoId} />
-    </div>
-      
+    <div className='container'>
+   <div className=' justify-content-center align-items-center d-flex' style={{ maxWidth: '100%' }}>
+      <iframe
+         width="560" 
+         height="315"
+         src={`https://www.youtube.com/embed/${videoId}`}
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+         allowFullScreen
+         title="Embedded YouTube"
+      ></iframe>
+   </div>
+</div>
 
-<section class="bg-light py-3 py-md-5">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-        <h3 class="fs-6 text-secondary mb-2 text-uppercase text-center">Our Success</h3>
-        <h2 class="mb-4 display-5 text-center">We have a proven track record of success.</h2>
-        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle"/>
+
+<section className="bg-light py-3 py-md-5">
+  <div className="container">
+    <div className="row justify-content-md-center">
+      <div className="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+        <h3 className="fs-6 text-secondary mb-2 text-uppercase text-center">Our Success</h3>
+        <h2 className="mb-4 display-5 text-center">We have a proven track record of success.</h2>
+        <hr className="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle"/>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row gy-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6">
-        <img class="img-fluid rounded" loading="lazy" src={team} alt="Our Success"/>
+  <div className="container">
+    <div className="row gy-4 gy-lg-0 align-items-lg-center">
+      <div className="col-12 col-lg-6">
+        <img className="img-fluid rounded" loading="lazy" src={team} alt="Our Success"/>
       </div>
-      <div class="col-12 col-lg-6">
-        <div class="row justify-content-xl-end">
-          <div class="col-12 col-xl-11">
-            <div class="row gy-4 gy-sm-0 overflow-hidden">
-              <div class="col-12 col-sm-6">
-                <div class="card border-0 border-bottom border-primary shadow-sm mb-4">
-                  <div class="card-body text-center p-4 p-xxl-5">
-                    <h3 class="display-2 fw-bold mb-2">60</h3>
-                    <p class="fs-5 mb-0 text-secondary">Finished Projects</p>
+      <div className="col-12 col-lg-6">
+        <div className="row justify-content-xl-end">
+          <div className="col-12 col-xl-11">
+            <div className="row gy-4 gy-sm-0 overflow-hidden">
+              <div className="col-12 col-sm-6">
+                <div className="card border-0 border-bottom border-primary shadow-sm mb-4">
+                  <div className="card-body text-center p-4 p-xxl-5">
+                    <h3 className="display-2 fw-bold mb-2">60</h3>
+                    <p className="fs-5 mb-0 text-secondary">Finished Projects</p>
                   </div>
                 </div>
-                <div class="card border-0 border-bottom border-primary shadow-sm">
-                  <div class="card-body text-center p-4 p-xxl-5">
-                    <h3 class="display-2 fw-bold mb-2">18k+</h3>
-                    <p class="fs-5 mb-0 text-secondary">Issues Solved</p>
+                <div className="card border-0 border-bottom border-primary shadow-sm">
+                  <div className="card-body text-center p-4 p-xxl-5">
+                    <h3 className="display-2 fw-bold mb-2">18k+</h3>
+                    <p className="fs-5 mb-0 text-secondary">Issues Solved</p>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
-                <div class="card border-0 border-bottom border-primary shadow-sm mt-lg-6 mt-xxl-8 mb-4">
-                  <div class="card-body text-center p-4 p-xxl-5">
-                    <h3 class="display-2 fw-bold mb-2">10k+</h3>
-                    <p class="fs-5 mb-0 text-secondary">Happy Customers</p>
+              <div className="col-12 col-sm-6">
+                <div className="card border-0 border-bottom border-primary shadow-sm mt-lg-6 mt-xxl-8 mb-4">
+                  <div className="card-body text-center p-4 p-xxl-5">
+                    <h3 className="display-2 fw-bold mb-2">10k+</h3>
+                    <p className="fs-5 mb-0 text-secondary">Happy Customers</p>
                   </div>
                 </div>
-                <div class="card border-0 border-bottom border-primary shadow-sm">
-                  <div class="card-body text-center p-4 p-xxl-5">
-                    <h3 class="display-2 fw-bold mb-2">78</h3>
-                    <p class="fs-5 mb-0 text-secondary">Awwwards</p>
+                <div className="card border-0 border-bottom border-primary shadow-sm">
+                  <div className="card-body text-center p-4 p-xxl-5">
+                    <h3 className="display-2 fw-bold mb-2">78</h3>
+                    <p className="fs-5 mb-0 text-secondary">Awwwards</p>
                   </div>
                 </div>
               </div>

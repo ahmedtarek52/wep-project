@@ -23,7 +23,7 @@ export default function Contact() {
     sendData[eventInfo.target.name] = eventInfo.target.value;
     setcontactData(sendData);
   }
-
+ 
   async function sendDataToApi() {
     try {
       let { data } = await axios.post(`${API_URL}/complaints/contact`, contatData);

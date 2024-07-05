@@ -10,11 +10,12 @@ import aboutus from "../images/1.png"
 import aboutus2 from "../images/we_need_help_img_2.jpg"
 import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
+import Button from '../Ui/Button';
 
 
 
 export default function About() {
-  let { organizations} =useContext(DataContext);
+  let { organizations } =useContext(DataContext);
     const [donCard, setDonCard] = useState([]);
 
     
@@ -22,7 +23,6 @@ export default function About() {
         try {
         const {data} = await axios.get(`${API_URL}/donationcard`)
         setDonCard(data.data)
-        console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -140,7 +140,7 @@ export default function About() {
 
       <div > 
         <div className='container'>
-        <p className=' text-light-emphasis fs-5 text-center'>
+        <div className=' text-light-emphasis fs-5 text-center'>
           <h1>Our supporting associations</h1>
           <span className=' fw-semibold'>We are proud to announce our collaboration with those charities</span>, a
           dedicated organizations those shares our vision for a better future.
@@ -148,7 +148,7 @@ export default function About() {
           about meaningful change. Together, we are committed to making a
           positive impact in our community and beyond. Join us as we work hand
           in hand to support our project and uplift those in need.
-        </p>
+        </div>
         </div>
      
         <div className="row g-3 align-items-center">
@@ -198,13 +198,13 @@ export default function About() {
                     className="accordion-collapse collapse show"
                     data-bs-parent="#accordionExample"
                   >
-               <div className="accordion-body">
-  <strong>Clothe a Life, Spread Warmth.</strong>{" "}
-  Your donations can provide essential clothing for those in need. We accept new and gently used clothing items of all sizes and types. Every piece of clothing can make a significant difference in someone's life. 
-  From warm winter coats to summer dresses, your contributions help keep families clothed throughout the year. 
-  Clothing is a basic necessity that many take for granted, it's a luxury they cannot afford. 
-  By donating, you are ensuring that everyone has the dignity and comfort of appropriate attire.
-</div>
+                    <div className="accordion-body">
+                      <strong>Clothe a Life, Spread Warmth.</strong>{" "}
+                      Your donations can provide essential clothing for those in need. We accept new and gently used clothing items of all sizes and types. Every piece of clothing can make a significant difference in someone's life. 
+                      From warm winter coats to summer dresses, your contributions help keep families clothed throughout the year. 
+                      Clothing is a basic necessity that many take for granted, it's a luxury they cannot afford. 
+                      By donating, you are ensuring that everyone has the dignity and comfort of appropriate attire.
+                    </div>
                   </div>
                 </div>
                 <div className="accordion-item">
@@ -225,13 +225,13 @@ export default function About() {
                     className="accordion-collapse collapse"
                     data-bs-parent="#accordionExample"
                   >
-                <div className="accordion-body">
-  <strong>Empower Families, Transform Lives.</strong>{" "}
-  Your monetary donations can have a profound effect on poor families. Financial contributions enable us to provide immediate assistance, support sustainable development, and create lasting change in the lives of those in need. 
-  With your help, we can fund educational programs, healthcare initiatives,
-  Every dollar donated goes directly to those in need, helping to break the cycle of poverty and build a brighter future. 
-  Your generosity can transform lives, providing hope and opportunity where it is needed most.
-</div>
+                    <div className="accordion-body">
+                      <strong>Empower Families, Transform Lives.</strong>{" "}
+                      Your monetary donations can have a profound effect on poor families. Financial contributions enable us to provide immediate assistance, support sustainable development, and create lasting change in the lives of those in need. 
+                      With your help, we can fund educational programs, healthcare initiatives,
+                      Every dollar donated goes directly to those in need, helping to break the cycle of poverty and build a brighter future. 
+                      Your generosity can transform lives, providing hope and opportunity where it is needed most.
+                    </div>
                   </div>
                 </div>
                 <div className="accordion-item">
@@ -253,12 +253,12 @@ export default function About() {
                     data-bs-parent="#accordionExample"
                   >
                     <div className="accordion-body">
-  <strong>Nourish and Furnish Hope.</strong>{" "}
-  Your support in providing food and furniture can drastically improve the quality of life for many families. Donations of non-perishable food items and gently used furniture are greatly appreciated and will be put to good use. 
-  Imagine the joy and relief of a family receiving a hearty meal or a comfortable bed to sleep in. 
-  Your contributions ensure that no one has to go hungry or live in an empty home. 
-  Together, we can nourish bodies and furnish homes, spreading hope and comfort to those who need it most.
-</div>
+                      <strong>Nourish and Furnish Hope.</strong>{" "}
+                      Your support in providing food and furniture can drastically improve the quality of life for many families. Donations of non-perishable food items and gently used furniture are greatly appreciated and will be put to good use. 
+                      Imagine the joy and relief of a family receiving a hearty meal or a comfortable bed to sleep in. 
+                      Your contributions ensure that no one has to go hungry or live in an empty home. 
+                      Together, we can nourish bodies and furnish homes, spreading hope and comfort to those who need it most.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -287,17 +287,9 @@ export default function About() {
                   <div>{donCard[0].info}</div>
                   <hr />
                   <div>{donCard[0].description}</div>
-                  <Link to={"/donation"}>
-                    <div className="buttons py-3">
-                      <button className="text-uppercase text-light  ">
-                        all details{" "}
-                        <span>
-                          {" "}
-                          <i className="fa-solid fa-circle-chevron-right"></i>
-                        </span>
-                      </button>
-                    </div>
-                  </Link>
+               <Button to='/donation' devStyle='py-3'>
+               all details{" "} <span> {" "}  <i className="fa-solid fa-circle-chevron-right"></i></span>
+               </Button>
                 </div>
               </>
             )}

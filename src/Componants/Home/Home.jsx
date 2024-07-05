@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef ,useContext} from "react";
 import { Helmet } from 'react-helmet';
 import startPage from "../images/home1.jpg";
 import startPage1 from "../images/home2.jpg";
@@ -20,7 +20,6 @@ import voltanir3 from "../images/avatar6.jpg"
 import voltanir4 from "../images/avatar9.jpg"
 import icon1 from "../images/icon-box.png"
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import { DataContext } from '../../Context/Store';
 
 import "./Home.css";
@@ -83,7 +82,7 @@ export default function Home() {
                         <p className="des ">Helping one person might not change the world, but it could change the world for one person.</p>
                         <div className="text-align-center d-flex buttons">
                            <Button to='/allforms' >denote now{' '}<span><i className="fa-solid fa-heart"></i> </span></Button>
-                           <Button to='/allforms' className='bg-light' color='txt-orange-style'>denote now{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
+                           <Button to='/contact' className='bg-light' color='txt-orange-style'>contact us{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
                         </div>
                      </div>
                   </div>
@@ -95,7 +94,7 @@ export default function Home() {
                         <p className="des">In a world where you can be anything, be kind. Your kindness can change someone's day, or even their life.</p>
                         <div className="text-align-center d-flex buttons">
                            <Button to='/allforms' >denote now{' '}<span><i className="fa-solid fa-heart"></i> </span></Button>
-                           <Button to='/allforms' className='bg-light' color='txt-orange-style'>denote now{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
+                           <Button to='/contact' className='bg-light' color='txt-orange-style'>contact us{' '}<span> <i className="fa-solid fa-circle-chevron-right"></i> </span></Button>
                         </div>
                      </div>
                   </div>
@@ -327,7 +326,7 @@ export default function Home() {
                      <div className="clint  p-5">
                         <h5 className="fw-bolder">ahmed tarek</h5>
                         <h6 className="text-muted">programmer</h6>
-                        <p className="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+                        <p className="lead">"This charity has been a beacon of hope for my family. When we were struggling to make ends meet, their support made all the difference. The kindness and generosity shown to us were beyond words. Thank you for helping us through tough times and giving us the strength to move forward."</p>
                      </div>
                   </div>
                   <div className="carousel-item">
@@ -335,7 +334,7 @@ export default function Home() {
                      <div className="clint p-5">
                         <h5 className="fw-bolder">mahmoud shalaby</h5>
                         <h6 className="text-muted">developer</h6>
-                        <p className="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+                        <p className="lead">"I have been volunteering with this charity for over a year, and I am continually amazed by the difference it makes in people's lives. The dedication and compassion of everyone involved are truly inspiring. Every donation goes a long way in providing much-needed assistance to those in need."</p>
                      </div>
                   </div>
                   <div className="carousel-item">
@@ -343,7 +342,7 @@ export default function Home() {
                      <div className="clint p-5">
                         <h5 className="fw-bolder">hossam ramdan</h5>
                         <h6 className="text-muted">designer</h6>
-                        <p className="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, beatae.</p>
+                        <p className="lead">"As a single mother, I faced numerous challenges in providing for my children. This charity stepped in and offered support when I needed it most. The resources and care they provided helped me get back on my feet. I am forever grateful for their help and the impact it has had on our lives."</p>
                      </div>
                   </div>
                </div>
