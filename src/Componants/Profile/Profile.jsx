@@ -110,6 +110,41 @@ export default function Profile() {
     e.preventDefault();
     updatePasswordDataToApi();
   }
+  // update photo
+  const [successMessage, setSuccessMessage] = useState('');
+  const [updatePhoto, setUpdatePhoto] = useState({
+    image: null,
+  });
+  
+  async function updatePhotoDataToApi() {
+    const headers = {
+      authorization: `Bearer ${token}`,
+    };
+    const formData = new FormData();
+    formData.append('image', updatePhoto.image);
+  
+    try {
+      const { data } = await axios.put(`${API_URL}/profile/uploadphoto`, formData, { headers });
+      if (data.success) {
+        console.log(data);
+        setSuccessMessage('Your Photo Is Updated successfully!');
+      } else {
+        console.log(error.response);
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
+  
+  function submitPhotoForm(e) {
+    e.preventDefault();
+    updatePhotoDataToApi();
+  }
+  
+  function handleFileChange(e) {
+    const file = e.target.files[0];
+    setUpdatePhoto((prev) => ({ ...prev, image: file }));
+  }
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -246,27 +281,23 @@ export default function Profile() {
                       {/* Profile */}
                       <div className="tab-pane fade" id="profile-tab-pane"  role="tabpanel"  aria-labelledby="profile-tab"  tabIndex="0">
                       {error && <div className="alert alert-danger">{error}</div>}
-
-                        <form
-                          onSubmit={submitProfileForm}
-                          action="#!"
-                          className="row gy-3 gy-xxl-4">
-                          <div className="col-12">
+                      {successMessage && <div className="alert alert-success my-2">{successMessage}</div>}
+                      <form onSubmit={submitPhotoForm}>
+                            <div className="col-12">
                             <div className="row gy-2">
                               <label className="col-12 form-label m-0"> Profile Image </label>
                               <div className="col-3">
-                                <img
-                                  src={profile.profilephoto?.url}
-                                  className="img-fluid w-100"
-                                  alt="profileimg"  />
+                                <img    src={profile.profilephoto?.url} className="img-fluid w-100"  alt="profileimg"  />
                               </div>
-                              <div className="col-12">
-                                <a href="#!" className="d-inline-block orange link-light lh-1 p-2 rounded">
-                                  <i className="fa-solid fa-pen-to-square"></i>{" "}
-                                </a>
+                              <div className="col-12 d-flex gap-3 py-3">
+                              <input   onChange={handleFileChange}  type="file"   className="form-control w-50"   name="image"  id="image"  />
+                                <button className=" border-0 orange link-light  p-2 rounded" type="submit"> <i className="fa-solid fa-pen-to-square"></i></button>
                               </div>
                             </div>
                           </div>
+                        </form>
+
+                        <form  onSubmit={submitProfileForm}  action="#!" className="row gy-3 gy-xxl-4">     
                           <div className="col-12 col-md-6">
                             <label htmlFor="inputFirstName" className="form-label" >username</label>
                             <input onChange={getUpdatedData}  value={updateProfile.username}
